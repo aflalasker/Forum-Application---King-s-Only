@@ -9,7 +9,7 @@ class Topic < ActiveRecord::Base
     validates_presence_of :name
     validates_presence_of :name, :maximum => 255
     
-    scope :newest_first, lambda { order("topics.created_at DESC") }
+    scope :sorted, lambda { order("topics.created_at DESC") }
     
     private
         def add_default_permalink
