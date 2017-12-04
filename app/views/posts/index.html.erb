@@ -1,0 +1,21 @@
+<% @page_title = "Posts" %>
+
+<div>
+  <h2>Posts</h2>
+
+  <div><%= pluralize(@posts.size, 'post') %></div>
+  <table>
+    <tr>
+      <th>Content</th>
+    </tr>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.content %></td>
+      <td>
+        <%= link_to("Edit", {:action => 'edit', :id => post.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => post.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

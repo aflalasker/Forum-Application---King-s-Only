@@ -1,0 +1,15 @@
+<% @page_title = "Update Post" %>
+
+<div>
+  <h2>Update post</h2>
+
+  <%= form_for(:post, :url => {:action => 'edit', :id => @post.id}) do |f| %>
+
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <div>
+      <%= submit_tag("Update Post") %>
+    </div>
+
+  <% end %>
+</div>
