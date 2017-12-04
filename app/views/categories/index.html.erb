@@ -1,0 +1,25 @@
+<% @page_title = "Categories" %>
+
+<div>
+    <h2>Categories</h2>
+    
+    <div>
+        <%= pluralize(@categories.size, 'category') %>
+    </div>
+    <table>
+        <tr>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <% @categories.each do |category| %>
+            <tr>
+                <td><%= category.name %></td>
+                <td>
+                    <%= link_to("Edit", {:action => 'edit', :id => category.id}, :class => 'action edit') %>
+                    <%= link_to("Delete", {:action => 'delete', :id => category.id}, :class => 'action delete') %>
+                </td>
+            </tr>
+        </tr>
+        <% end %>
+    </table>
+</div>
