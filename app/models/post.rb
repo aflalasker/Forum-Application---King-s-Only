@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
     
     validates_presence_of :content
     
-    scope :newest_first, lambda { order("posts.created_at DESC") }
+    scope :sorted, lambda { order("posts.created_at DESC") }
     
     private
         def touch_topic
