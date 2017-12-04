@@ -1,0 +1,14 @@
+<% @page_title = "Delete Category" %>
+
+<div>
+    <h2>Delete Category</h2>
+    
+    <%= form_for(:category, :url => {:action => 'destroy', :id => @category.id}) do |f| %>
+    
+    <p>Delete category <%= @category.name %>
+    </p>
+    <div>
+        <%= submit_tag("Delete") %>
+    </div>
+    <% end %>
+</div>
