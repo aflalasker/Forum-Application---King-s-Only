@@ -3,7 +3,7 @@ class Topic < ActiveRecord::Base
     has_many :posts
     
     before_validation :add_default_permalink
-    after_save :touch_post
+    after_save :touch_category
     after_destroy :delete_related_categories
     
     validates_presence_of :name
@@ -16,8 +16,8 @@ class Topic < ActiveRecord::Base
             self.permalink = "#{id}-#{name.parameterize}"
         end
         
-        def touch_post
-            post.touch 
+        def touch_category
+            category.touch 
         end
         
         def delete_related_posts 
