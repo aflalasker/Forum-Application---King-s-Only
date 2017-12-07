@@ -1,0 +1,19 @@
+<% @page_title = "New Title" %>
+
+
+
+<div>
+    <h2>Create Topic</h2>
+    
+    <% form_for(:topic, :url =>{:action => 'create', :category_id => @category.id}) do |f| %>
+    
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+    
+    <div>
+        <%= submit_tag("Create Topic") %>
+    </div>
+        
+    <% end %>
+</div>
+
+

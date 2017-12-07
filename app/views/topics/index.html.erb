@@ -1,0 +1,26 @@
+<% @page_title = "Topics" %>
+
+<!--Link-->
+
+<div>
+    <h2>Topics</h2>
+    
+    <!--Link--> 
+    <%= link_to("New", {:action => 'new', :category_id => @category.id}, :class => "action new") %>
+    
+    <table class="listing" summary="Topic list">
+        <tr class="header">
+            <th>Name</th>
+        </tr>
+        <% @topics.each do |topic| %>
+        <tr>
+             <td><%= topic.name %></td>
+             <td>
+                 <%= link_to("Edit", {:action => 'edit', :id => topic.id, :category_id => @category.id}, :class => "action edit") %>
+                 <%= link_to("Delete", {:action => 'delete', :id => topic.id, :category_id => @category.id}, :class => "action delete") %>
+                 
+             </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
