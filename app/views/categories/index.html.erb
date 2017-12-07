@@ -13,12 +13,13 @@
         <tr>
             <% @categories.each do |category| %>
             <tr>
+
                 <td></td><%= link_to(category.name, {:controller => 'topics', :category_id => category.id}, :class => 'action index') %></td>
                 <td>
                     <%= link_to("Edit", {:action => 'edit', :id => category.id}, :class => 'action edit') %>
                     <%= link_to("Delete", {:action => 'delete', :id => category.id}, :class => 'action delete') %>
-                    
-                    
+
+                  
                 </td>
             </tr>
         </tr>
