@@ -6,7 +6,9 @@
     <h2>Topics</h2>
     
     <!--Link--> 
-    <%= link_to("New", {:action => 'new', :id => topic.id, :category_id => @category.id}, :class => "action new") %>
+
+    <%= link_to("New", {:action => 'new', :category_id => @category.id}, :class => "action new") %>
+
     
     <table class="listing" summary="Topic list">
         <tr class="header">

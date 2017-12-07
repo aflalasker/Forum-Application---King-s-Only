@@ -2,12 +2,16 @@
 
 <div>
     <h2>Update Page</h2>
-    
-      <%= form_for(:topic, :url => {:action => 'update', :id => @topic.id, :post_id => @post.id}) do |f| %>
+
+      <%= form_for(:topic, :url => {:action => 'update', :id => @topic.id, :category_id => @category.id}) do |f| %>
+
      
       <%= render(:partial => "form", :locals => {:f => f}) %>
       
       <div>
           <%= submit_tag("Update Topic") %>
       </div>
+     
+      <% end %>
+
 </div>
