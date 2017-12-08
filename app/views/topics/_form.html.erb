@@ -1,5 +1,9 @@
 <table>
     <tr>
+        <th><%= f.label(:category_id, "Category") %></th>
+        <td><%= f.select(:category_id, @categories.map {|s| [s.name, s.id]}) %></td>
+    </tr>
+    <tr>
         <th>
             <%= f.label(:name, "Name") %>
         </th>

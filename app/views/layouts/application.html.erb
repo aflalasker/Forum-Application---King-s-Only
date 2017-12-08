@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Student's Connect| <%= @page_title || "Admin" %></title>
+    <title>Student's Connect | <%= @page_title || "Admin" %></title>
     <%= stylesheet_link_tag('application', :media => 'all') %>
+    <%= stylesheet_link_tag('https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css') %>
+    <%= stylesheet_link_tag('https://fonts.googleapis.com/css?family=Lato:300,400,700') %>
   </head>
   <body>
     <header class="main_header clearfix">
-      <div class="wrapper">
-        <div id="logo">
-          <p></p>
-        </div>     
+        <div class="wrapper">
+            <div id="logo">
+              <p>King's Connect</p>
+            </div> 
+        </div>
     </header>
     <div class="wrapper">
-      <% if !flash[:notice].blank? %>
-        <div class="notice">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <div class="wrapper">
         <%= yield %>
-      </div>
     </div>
     <div id="footer">
       <p id="copyright">&copy; Pistachio Team</p>
