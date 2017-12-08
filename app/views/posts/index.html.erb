@@ -1,21 +1,24 @@
 <% @page_title = "Posts" %>
 
-<div>
-  <h2>Posts</h2>
-
-  <div><%= pluralize(@posts.size, 'post') %></div>
-  <table>
-    <tr>
-      <th>Content</th>
-    </tr>
+  <h2><%= @topic.name %> (<%= pluralize(@posts.size, 'post') %>) </h2>
     <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.content %></td>
-      <td>
+      <div id = "post_content">
+        <div id = "comments">
+          <div id = "comment">
+            <div class = "comment_content">
+               <p><%= post.content %></p>
+            </div>
+          </div>
+      </div>
+      </div>
+      <p class = "date">
+        <%= time_ago_in_words(post.created_at) %>
+        <button class = "button">
         <%= link_to("Edit", {:action => 'edit', :id => post.id}, :class => 'action edit') %>
+        </button>
+        <button class = "button">
         <%= link_to("Delete", {:action => 'delete', :id => post.id}, :class => 'action delete') %>
-      </td>
-    </tr>
+        </button>
+      </p>
     <% end %>
-  </table>
-</div>
+
