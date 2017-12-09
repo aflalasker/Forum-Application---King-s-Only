@@ -231,3 +231,40 @@ footer{
             color:white;
         }
         
+
+
+#topic-header{
+	margin-top:5px;
+	background: #333;
+	h2 {
+		color:white;
+		font-family: "Courier New", Courier;
+		font-size: 18px;
+		
+	
+
+	}
+	#topic-header-badge{
+		float:right;
+		color:white;
+		font-family: "Courier New", Courier;
+		font-size:10px;
+		margin-top:3px;
+	}
+}
+
+.marginup15px {
+	margin-top:-15px;
+}
+
+.panel-default > .panel-heading-custom {
+    background: #333; color: #fff;
+}
+
+.niceTextLarge {
+	color:white; font-family: "Courier New", Courier; font-size: 24px;
+}
+
+.niceTextSm {
+	color:white; font-family: "Courier New", Courier; font-size: 12px;
+}
