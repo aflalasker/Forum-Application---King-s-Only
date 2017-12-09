@@ -14,12 +14,21 @@
  *= require_self
  */
  
+ 
 body {
  	font-family: 'Lato', sans-serif;
  	background: #EDEFF0;
+ 	
+ 	// background-color: #46403A;
+ 	
  }
 
+
+footer{
+	
+}
 .wrapper {
+	background: white;
 	width: 60%;
 	max-width: 1140px;
 	margin: 0 auto;
@@ -37,7 +46,8 @@ body {
 .main_header {
 	width: 100%;
 	margin: 0 auto;
-	background: white;
+	color:white;
+	background-color: #333;
 	#logo {
 		float: left;
 		a {
@@ -46,10 +56,11 @@ body {
 			letter-spacing: -1px;
 			font-size: 1.2rem;
 			text-decoration: none;
-			color:black;
+			color:white;
 		}
 	}
 }
+
 
 
 
@@ -75,15 +86,23 @@ body {
 		}
 	}
 }
-
-.button {
-	color: #397CAC;
-	border: 1px solid #397CAC;
-	padding: .5em 1em;
-	border-radius: 0.2em;
-	text-decoration: none !important;
-	margin-right: 2%;
+.btn-default{
+	margin-top:1px;
+	margin-left:1px;
+	margin-bottom:1px;
+	margin-right:1px;
+	float:right;
 }
+
+// .button {
+// 	color: #397CAC;
+// 	border: 1px solid #397CAC;
+// 	padding: .5em 1em;
+// 	border-radius: 0.2em;
+// 	text-decoration: none !important;
+// 	margin-right: 2%;
+// }
+
 
 #post_content {
 	background: white;
@@ -203,3 +222,12 @@ body {
 			border-radius: .2em;
 			margin: 1em 0;
 		}
+		
+ footer {
+            background-color: #333;
+            width: 100%;
+            bottom: 0;
+            position: fixed;
+            color:white;
+        }
+        
