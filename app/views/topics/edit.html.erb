@@ -1,14 +1,17 @@
 <% @topic_title = "Edit Topic" %>
 
 <div>
-    <h2>Update Page</h2>
+ 
+    <div class="panel panel-default" style="margin-top:5px;">
+      <div class="panel-heading niceText" style="background: #333; color: #fff;">Update Topic</div>
+      <div class="panel-body">
+          <div style="margin-bottom:15px;">Please <strong>insert</strong> new name for topic: <span class="label label-primary"><%= @topic.name %></span></div>
+          <%= form_for(:topic, :url => {:action => 'update', :id => @topic.id, :category_id => @category.id}) do |f| %>
+          <%= render(:partial => "form", :locals => {:f => f}) %>      
+      </div>
+    </div>
 
-      <%= form_for(:topic, :url => {:action => 'update', :id => @topic.id, :category_id => @category.id}) do |f| %>
-
-     
-      <%= render(:partial => "form", :locals => {:f => f}) %>
-      
-      <div>
+      <div style="float:right;">
           <%= submit_tag("Update Topic") %>
       </div>
      

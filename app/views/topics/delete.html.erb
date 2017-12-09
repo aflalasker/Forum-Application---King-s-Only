@@ -2,15 +2,23 @@
 
 
 <div>
-    <h2>Delete Page</h2>
+    <h2>Delete Topic</h2>
+    <div class="panel panel-default" style="margin-top:5px;">
+      <div class="panel-heading niceText" style="background: #333; color: #fff;">Remove Topic</div>
+      <div class="panel-body">
+        <%= form_for(:topic, :url => {:action => 'destroy', :id => @topic.id, :category_id => @category.id}) do |f| %>
+        
+        <p>Are you sure you want to delete <span class="label label-default"><%= @topic.name %></span> topic?</p>
     
-    <%= form_for(:topic, :url => {:action => 'destroy', :id => @topic.id, :category_id => @category.id}) do |f| %>
+      </div>
+    </div>
     
-    <p>Are you sure you want to delete this topic?</p>
     
-    <p><%= @topic.name %></p>
     
-    <div>
+    
+
+    
+    <div style="float:right;">
         <%= submit_tag("Delete Page") %>
     </div>
     <% end %>
