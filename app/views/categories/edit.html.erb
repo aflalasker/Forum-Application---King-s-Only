@@ -3,11 +3,15 @@
 <div>
     <h2>Update Category</h2>
     
-    <%= form_for(:category, :url => {:action => 'update', :id => @category.id}) do |f| %>
     
+    <div class="alert alert-info">
+        Please <strong>insert</strong> new category name.
+    </div>
+    <%= form_for(:category, :url => {:action => 'update', :id => @category.id}) do |f| %>
+   
         <%= render(:partial => "form", :locals => {:f => f}) %>
         
-        <div>
+        <div style="margin-top: 10px; float:right;">
             <%= submit_tag("Update") %>
         </div>
     <% end %>

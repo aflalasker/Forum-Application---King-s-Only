@@ -1,25 +1,26 @@
 <% @page_title = "Categories" %>
 
 <div>
-    <h2>Categories</h2>
+    <div id="categoriesHead">
+        <h2 style="margin-left: 5px; margin-top: 5px;">Categories</h2>
+    </div>
+    
     
     <div>
-        <%= pluralize(@categories.size, 'category') %>
+        <span class="label label-default""><%= pluralize(@categories.size, 'category') %></span>
     </div>
-    <table>
-        <tr>
-            <th>Name</th>
-        </tr>
+    <table class="table" style="margin-top:5px;">
         <tr>
             <% @categories.each do |category| %>
             <tr>
-
-                <td></td><%= link_to(category.name, {:controller => 'topics', :category_id => category.id}, :class => 'action index') %></td>
+                <td><%= link_to(category.name, {:controller => 'topics', :category_id => category.id}, :class => 'action index') %></td>
                 <td>
+                    <button class="btn-default">
                     <%= link_to("Edit", {:action => 'edit', :id => category.id}, :class => 'action edit') %>
+                    </button>
+                    <button class="btn-default">
                     <%= link_to("Delete", {:action => 'delete', :id => category.id}, :class => 'action delete') %>
-
-                  
+                    </button>
                 </td>
             </tr>
         </tr>
