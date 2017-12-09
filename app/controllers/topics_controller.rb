@@ -12,6 +12,10 @@ class TopicsController < ApplicationController
     def index
       @topics = @category.topics.sorted
     end
+    
+    def catIndex 
+      @categories = Category.sorted
+    end   
 
     def edit
       @topic = Topic.find(params[:id])
