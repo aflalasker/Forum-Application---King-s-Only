@@ -257,9 +257,6 @@ footer{
 	margin-top:-15px;
 }
 
-.panel-default > .panel-heading-custom {
-    background: #333; color: #fff;
-}
 
 .niceTextLarge {
 	color:white; font-family: "Courier New", Courier; font-size: 24px;
@@ -267,4 +264,8 @@ footer{
 
 .niceTextSm {
 	color:white; font-family: "Courier New", Courier; font-size: 12px;
+}
+
+.niceText {
+	color:white; font-family: "Courier New", Courier; font-size: 16px;
 }
