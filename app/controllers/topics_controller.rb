@@ -40,7 +40,7 @@ class TopicsController < ApplicationController
   end
   
   def create
-    @topic = Topic.new(post_params)
+    @topic = Topic.new(topic_params)
     if @topic.save
       flash[:notice] = "Topic created successfully."
       redirect_to(:action => 'index', :category_id => @category.id)

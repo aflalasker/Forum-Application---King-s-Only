@@ -1,0 +1,15 @@
+<table>
+    <tr>
+    <th><%= f.label(:topic_id, "Topic") %></th>
+    <td><%= f.select(:topic_id, @topics.map {|s| [s.name, s.id]}) %></td>
+    </tr>
+    <tr>
+        <th >
+            <%= f.label(:content, "Name") %>
+        </th>
+        <td>
+            <%= f.text_field(:content) %>
+        </td>
+        </div>
+    </tr>
+</table>

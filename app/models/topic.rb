@@ -3,10 +3,10 @@ class Topic < ActiveRecord::Base
     has_many :posts
     
     before_validation :add_default_permalink
-    after_save :touch_category
     after_destroy :delete_related_categories
     
     validates_presence_of :name
+    validates_presence_of :category_id
     validates_presence_of :name, :maximum => 255
     
     scope :sorted, lambda { order("topics.created_at DESC") }
@@ -14,10 +14,6 @@ class Topic < ActiveRecord::Base
     private
         def add_default_permalink
             self.permalink = "#{id}-#{name.parameterize}"
-        end
-        
-        def touch_category
-            category.touch 
         end
         
         def delete_related_posts 

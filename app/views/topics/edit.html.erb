@@ -1,4 +1,4 @@
-<% @topic_title = "Edit Topic" %>
+<% @page_title = "Edit Topic" %>
 
 <div>
  
@@ -16,5 +16,5 @@
       </div>
      
       <% end %>
-   <button class="btn btn-default"><%= link_to("Back", {:controller => 'topics'}, :class => 'action index') %></button>
+   <button class="btn btn-default"><%= link_to("Back", {:category_id => @category.id, :action => 'index'}, :class => 'action index') %></button>
 </div>

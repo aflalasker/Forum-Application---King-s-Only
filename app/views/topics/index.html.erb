@@ -14,7 +14,7 @@
      
       <div class="panel panel-default marginup15px">
         <div class="panel-heading niceTextSm" style="background: #333; color: #fff;">New Topic</div>
-        <div class="panel-body"><button class="btn btn-default" style="float:left;"><%= link_to("New", {:action => 'new', :category_id => @category.id}, :class => "action new") %></button></div>
+        <div class="panel-body"><button class="btn btn-default" style="float:left;"><%= link_to("New", {:action => 'new', :category_id => @category.id}, :class => 'action new') %></button></div>
       </div>
       <!--end panel panel-default 1-->
       
@@ -28,7 +28,7 @@
  
                 <% @topics.each do |topic| %>
                 <tr>
-                     <td><%= topic.name %></td>
+                     <td><%= link_to(topic.name, {:controller => 'posts', :topic_id => topic.id}, :class => 'action index') %></td>
                      <td>
                          <button class="btn btn-default"> <%= link_to("Edit", {:action => 'edit', :id => topic.id, :category_id => @category.id}, :class => "action edit") %></button>
                          <button class="btn btn-default"> <%= link_to("Delete", {:action => 'delete', :id => topic.id, :category_id => @category.id}, :class => "action delete") %></button>
@@ -43,5 +43,5 @@
       <!--end panel-heading-->
     </div>
     <!--end panel-default-->
-    <button class="btn btn-default"><%= link_to("Back", {:controller => 'categories'}, :class => 'action index') %></button>
+    <button class="btn btn-default"><%= link_to("Back", {:controller => 'categories', :action => 'index'}, :class => 'action index') %></button>
 </div>
