@@ -1,17 +1,26 @@
-<% @page_title = "Delete Post" %>
+<% @topic_title = "Delete post" %>
+
 
 <div>
-  <h2>Delete Post</h2>
-
-  <%= form_for(:post, :url => {:action => 'destroy', :id => @post.id}) do |f| %>
-
-    <p>Are you sure you want to permanently delete this post?</p>
-
-    <p class="Post-name"><%= @post.name %></p>
-
-    <div>
-      <%= submit_tag("Delete Post") %>
+    <h2>Delete Post</h2>
+    <div class="panel panel-default" style="margin-top:5px;">
+      <div class="panel-heading niceText" style="background: #333; color: #fff;">Remove Post</div>
+      <div class="panel-body">
+        <%= form_for(:post, :url => {:action => 'destroy', :id => @post.id, :topic_id => @topic.id}) do |f| %>
+        
+        <p>Are you sure you want to delete <span class="label label-default"><%= @post.content %></span> post?</p>
+    
+      </div>
     </div>
+    
+    
+    
+    
 
-  <% end %>
+    
+    <div style="float:right;">
+        <%= submit_tag("Delete Post") %>
+    </div>
+    <% end %>
+     <button class="btn btn-default"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'action index') %></button>
 </div>

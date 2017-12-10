@@ -1,24 +1,47 @@
 <% @page_title = "Posts" %>
 
-  <h2><%= @topic.name %> (<%= pluralize(@posts.size, 'post') %>) </h2>
-    <% @posts.each do |post| %>
-      <div id = "post_content">
-        <div id = "comments">
-          <div id = "comment">
-            <div class = "comment_content">
-               <p><%= post.content %></p>
-            </div>
-          </div>
-      </div>
-      </div>
-      <p class = "date">
-        <%= time_ago_in_words(post.created_at) %>
-        <button class = "button">
-        <%= link_to("Edit", {:action => 'edit', :id => post.id}, :class => 'action edit') %>
-        </button>
-        <button class = "button">
-        <%= link_to("Delete", {:action => 'delete', :id => post.id}, :class => 'action delete') %>
-        </button>
-      </p>
-    <% end %>
+<!--Link-->
 
+<div>
+    
+     <div class="panel panel-default">
+      <div id="topic-header" class="panel-heading">
+         <h2>Posts <span id="topic-header-badge" class="badge badge-default">Topic name: <%=@topic.name %> </span> </h2> 
+      </div> 
+     <!--end topic-header-->
+     </div>
+     <!--end panel panel-default 0-->
+     
+      <div class="panel panel-default marginup15px">
+        <div class="panel-heading niceTextSm" style="background: #333; color: #fff;">New Post</div>
+        <div class="panel-body"><button class="btn btn-default" style="float:left;"><%= link_to("New", {:action => 'new', :topic_id => @topic.id}, :class => 'action new') %></button></div>
+      </div>
+      <!--end panel panel-default 1-->
+      
+      <div class="panel panel-default marginup15px">
+      
+      	<div class="panel-heading niceTextSm" style="background: #333; color: #fff;">Current Posts</div>
+      
+        <div class="panel-body">
+
+            <table class="table table-bordered" summary="Post list">
+ 
+                <% @posts.each do |post| %>
+                <tr>
+                     <td><%= post.content %></td>
+                     <td>
+                         <button class="btn btn-default"> <%= link_to("Edit", {:action => 'edit', :id => post.id, :topic_id => @topic.id}, :class => "action edit") %></button>
+                         <button class="btn btn-default"> <%= link_to("Delete", {:action => 'delete', :id => post.id, :topic_id => @topic.id}, :class => "action delete") %></button>
+                     </td>
+                </tr>
+                <% end %>
+     
+            </table>    
+        </div>
+        <!--end panel-body-->
+      </div>     
+      <!--end panel-heading-->
+    </div>
+    <!--end panel-default-->
+    <button class="btn btn-default"><%= link_to("Back", {:controller => 'topics', :category_id => @topic.category_id, :action => 'index'}, :class => 'action index') %></button>
+</div>

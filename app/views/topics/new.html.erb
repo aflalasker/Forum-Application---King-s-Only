@@ -1,20 +1,20 @@
-<% @page_title = "New Title" %>
-
-
+<% @page_title = "New Topic" %>
 
 <div>
-    <h2>Create Topic</h2>
-    
-    <% form_for(:topic, :url =>{:action => 'create', :category_id => @category.id}) do |f| %>
-    
-    <%= render(:partial => "form", :locals => {:f => f}) %>
-    
-    <div>
-        <%= submit_tag("Create Topic") %>
+ 
+    <div class="panel panel-default" style="margin-top:5px;">
+      <div class="panel-heading niceText" style="background: #333; color: #fff;">New Topic</div>
+      <div class="panel-body">
+          <div style="margin-bottom:15px;">Please <strong>insert</strong> name for new topic: </div>
+          <%= form_for(:topic, :url => {:action => 'create', :category_id => @category.id}) do |f| %>
+          <%= render(:partial => "form", :locals => {:f => f}) %>      
+      </div>
     </div>
-        
-    <% end %>
-     <button class="btn btn-default"><%= link_to("Back", {:controller => 'topics'}, :class => 'action index') %></button>
+
+      <div style="float:right;">
+          <%= submit_tag("New Topic") %>
+      </div>
+     
+      <% end %>
+   <button class="btn btn-default"><%= link_to("Back", {:category_id => @category.id, :action => 'index'}, :class => 'action index') %></button>
 </div>
-
-
