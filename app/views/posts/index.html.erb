@@ -25,7 +25,10 @@
         <div class="panel-body">
 
             <table class="table table-bordered" summary="Post list">
- 
+                <tr>
+                     <td><%= @topic.content %></td>
+                     <td></td>
+                </tr>
                 <% @posts.each do |post| %>
                 <tr>
                      <td><%= post.content %></td>

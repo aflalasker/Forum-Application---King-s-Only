@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20171129172809) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.string   "name"
+    t.string   "content"
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"

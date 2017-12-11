@@ -5,7 +5,7 @@
     <div class="panel panel-default" style="margin-top:5px;">
       <div class="panel-heading niceText" style="background: #333; color: #fff;">New Post</div>
       <div class="panel-body">
-          <div style="margin-bottom:15px;">Please <strong>insert</strong> content for new post: </div>
+          <div style="margin-bottom:15px;">Please <strong>insert</strong> content for new post in topic: <span class="label label-primary"><%= @topic.name %></span></div>
           <%= form_for(:post, :url => {:action => 'create', :topic_id => @topic.id}) do |f| %>
           <%= render(:partial => "form", :locals => {:f => f}) %>      
       </div>
