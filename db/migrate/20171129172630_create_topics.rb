@@ -4,6 +4,7 @@ class CreateTopics < ActiveRecord::Migration
       t.integer "category_id"
       t.integer "user_id"
       t.string "name"
+      t.string "content"
       t.string "permalink"
       t.timestamps
     end

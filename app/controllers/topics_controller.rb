@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
     before_action :find_category
   
     def new
-      @topic = Topic.new({:category_id => @category.id, :name => "Default"})
+      @topic = Topic.new({:category_id => @category.id, :name => "", :content => ""})
       @categories = Category.sorted
       @topic_count = Topic.count + 1
     end
@@ -41,6 +41,7 @@ class TopicsController < ApplicationController
   
   def create
     @topic = Topic.new(topic_params)
+    @topic.category_id = @category.id
     if @topic.save
       flash[:notice] = "Topic created successfully."
       redirect_to(:action => 'index', :category_id => @category.id)
@@ -59,7 +60,7 @@ class TopicsController < ApplicationController
   
   private
     def topic_params
-      params.require(:topic).permit(:category_id, :name, :permalink, :created_at)
+      params.require(:topic).permit(:id, :category_id, :name, :content, :permalink, :created_at)
     end
     
     def find_category

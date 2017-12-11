@@ -37,6 +37,7 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
+    @post.topic_id = @topic.id
     if @post.save
       flash[:notice] = "Post created successfully."
       redirect_to(:action => 'index', :topic_id => @topic.id)
