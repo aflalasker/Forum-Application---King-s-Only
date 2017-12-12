@@ -26,7 +26,7 @@
             <table class="table table-bordered" summary="Post list">
                 <tr>
                      <td><%= @topic.content %></td>
-                     <td></td>
+                     <td><%= User.where(:id => @topic.user_id).pluck(:first_name)[0] %> <%= User.where(:id => @topic.user_id).pluck(:last_name)[0] %></td>
                 </tr>
                 <% @posts.each do |post| %>
                 <tr>
