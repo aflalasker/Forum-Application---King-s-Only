@@ -50,9 +50,11 @@ class AccessController < ApplicationController
       @user = User.new(:first_name => @first_name, :last_name => @last_name, :email => @email, :role => @role)
       if @user.save
         session[:id] = (@user.pluck(:id))[0]
+        session[:role] = @role
         flash[:notice] = "You have logged in for the first time. Welcome!"
       else
         session[:id] = (User.where(:email => @email).pluck(:id))[0]
+        session[:role] = @role
         flash[:notice] = "You have been logged in. Welcome!"
       end
       redirect_to '/categories#index'
