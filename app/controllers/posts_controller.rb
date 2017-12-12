@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     before_action :find_topic
   
     def new
-      @post = Post.new({:topic_id => @topic.id, :content => "Default"})
+      @post = Post.new({:topic_id => @topic.id, :content => "", :user_id => session[:id]})
       @topics = @topic.category.topics.sorted
       @post_count = Post.count + 1
     end
@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.topic_id = @topic.id
+    @post.user_id = session[:id]
     if @post.save
       flash[:notice] = "Post created successfully."
       redirect_to(:action => 'index', :topic_id => @topic.id)
@@ -56,7 +57,7 @@ class PostsController < ApplicationController
   
   private
     def post_params
-      params.require(:post).permit(:topic_id, :content, :created_at)
+      params.require(:post).permit(:topic_id, :content, :user_id, :created_at)
     end
     
     def find_topic

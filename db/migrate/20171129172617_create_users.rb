@@ -4,12 +4,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string "first_name", :limit => 25
       t.string "last_name", :limit => 50
       t.string "email", :default => "", :null => false, :limit => 100
-      t.string "password", :limit => 40
-      t.string "password_digest"
       t.integer "role"
       t.timestamps
     end
-    add_index("users", "email")
+    add_index "users", ["email"]
   end
   def down
     drop_table :users

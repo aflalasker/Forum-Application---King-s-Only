@@ -5,12 +5,11 @@ class CreateTopics < ActiveRecord::Migration
       t.integer "user_id"
       t.string "name"
       t.string "content"
-      t.string "permalink"
+      t.integer "respect"
       t.timestamps
     end
     add_index("topics", "category_id")
     add_index("topics", "user_id")
-    add_index("topics", "permalink")
   end
   def down
     drop_table :topics

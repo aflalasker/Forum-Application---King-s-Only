@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer "topic_id"
       t.integer "user_id"
       t.text "content"
+      t.integer "respect"
       t.timestamps
     end
     add_index("posts", "topic_id")
