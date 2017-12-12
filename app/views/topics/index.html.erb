@@ -11,11 +11,12 @@
      <!--end topic-header-->
      </div>
      <!--end panel panel-default 0-->
-     
+     <% if !@category.name.include?('Staff') || session[:role] == 1 %>
       <div class="panel panel-default marginup15px">
         <div class="panel-heading niceTextSm" style="background: #333; color: #fff;">New Topic</div>
         <div class="panel-body"><button class="btn btn-default" style="float:left;"><%= link_to("New", {:action => 'new', :category_id => @category.id}, :class => 'action new') %></button></div>
       </div>
+      <% end %>
       <!--end panel panel-default 1-->
       
       <div class="panel panel-default marginup15px">
@@ -30,10 +31,12 @@
                 <tr>
                      <td><%= link_to(topic.name, {:controller => 'posts', :topic_id => topic.id}, :class => 'action index') %></td>
                      <td><%= User.where(:id => topic.user_id).pluck(:first_name)[0] %> <%= User.where(:id => topic.user_id).pluck(:last_name)[0] %></td>
+                     <% if !@category.name.include?('Staff') && User.where(:id => topic.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
                      <td>
                          <button class="btn btn-default"> <%= link_to("Edit", {:action => 'edit', :id => topic.id, :category_id => @category.id}, :class => "action edit") %></button>
                          <button class="btn btn-default"> <%= link_to("Delete", {:action => 'delete', :id => topic.id, :category_id => @category.id}, :class => "action delete") %></button>
                      </td>
+                     <% end %>
                 </tr>
                 <% end %>
      

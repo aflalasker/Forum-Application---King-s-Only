@@ -1,3 +1,4 @@
+<% if !@category.name.include?('Staff') && User.where(:id => @topic.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
 <% @topic_title = "Delete topic" %>
 
 
@@ -12,6 +13,7 @@
     
       </div>
     </div>
+<% end %>
     
     
     

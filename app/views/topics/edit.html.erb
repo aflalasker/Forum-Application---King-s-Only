@@ -1,3 +1,4 @@
+<% if !@category.name.include?('Staff') && User.where(:id => @topic.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
 <% @page_title = "Edit Topic" %>
 
 <div>
@@ -18,3 +19,4 @@
       <% end %>
    <button class="btn btn-default"><%= link_to("Back", {:category_id => @category.id, :action => 'index'}, :class => 'action index') %></button>
 </div>
+<% end %>
