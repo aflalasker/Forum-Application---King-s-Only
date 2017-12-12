@@ -4,12 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   def confirm_logged_in
-    #unless session[:user_id]
-    #  flash[:notice] = "Login required"
-    #  redirect_to(:controller => 'access', :action => 'login')
-    #  return false
-    #else
+    unless session[:id]
+      flash[:notice] = "Login required"
+      redirect_to(:controller => 'access', :action => 'index')
+      return false
+    else
       return true
-    #end
+    end
   end
+
 end

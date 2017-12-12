@@ -17,17 +17,11 @@
     <header class="main_header clearfix">
         <div class="wrapper">
             <div id="logo">
-              <%= link_to("King's Connect", {:controller => 'categories', :action => 'index'}, :class => 'action index')%>
+              <%= link_to("King's Connect", {:controller => 'access', :action => 'index'}, :class => 'action index')%>
             </div> 
-            <div id = "name" style="margin-top:5px;">
-              <%= session[:name].split(", ")[1]%> <%= session[:name].split(", ")[0]%>
-            </div>
-            <div>
-            <button class="btn btn-default" style='margin-top:5px; margin-bottom:5px; margin-left:100px;'> <%= link_to("Log out", {:controller => 'access', :action => 'disconnect'}, :class => "action disconnect") %></button>
-            </div>
         </div>
     </header>
-    <div class="wrapper" style="margin-top:10px;">
+    <div class="wrapper">
         <%= yield %>
     </div>
     <footer>

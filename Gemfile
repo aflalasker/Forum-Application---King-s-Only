@@ -27,6 +27,14 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# Microsoft Authentification
+# Authentication resources
+omniauth_src = 'git://github.com/cbales/omniauth-microsoft_graph'
+gem 'omniauth-microsoft_v2_auth', git: omniauth_src
+
+# On Windows systems we need tzinfo-data
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
 
 
 # Use Capistrano for deployment

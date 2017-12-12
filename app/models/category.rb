@@ -5,8 +5,5 @@ class Category < ActiveRecord::Base
     validates_length_of :name, :maximum => 255
     
     scope :sorted, lambda { order("categories.created_at DESC") }
-    scope :search, lambda { |query|
-    where(["name LIKE ?", "%#{query}%"])
-    }
     
 end

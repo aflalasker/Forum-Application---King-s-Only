@@ -31,6 +31,7 @@
                 <% @posts.each do |post| %>
                 <tr>
                      <td><%= post.content %></td>
+                     <td><%= User.where(:id => post.user_id).pluck(:first_name)[0] %> <%= User.where(:id => post.user_id).pluck(:last_name)[0] %></td>
                      <td>
                          <button class="btn btn-default"> <%= link_to("Edit", {:action => 'edit', :id => post.id, :topic_id => @topic.id}, :class => "action edit") %></button>
                          <button class="btn btn-default"> <%= link_to("Delete", {:action => 'delete', :id => post.id, :topic_id => @topic.id}, :class => "action delete") %></button>
