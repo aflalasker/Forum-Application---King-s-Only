@@ -1,7 +1,5 @@
 class AccessController < ApplicationController
   
-  layout 'login'
-  
   skip_before_action :verify_authenticity_token
 
   # Specifies endpoint for connecting to the Microsoft Graph

@@ -13,7 +13,7 @@
      <!--end panel panel-default 0-->
      <% if !@category.name.include?('Staff') || session[:role] == 1 %>
       <div class="panel panel-default marginup15px">
-        <div class="panel-heading niceTextSm" style="background: #333; color: #fff;">New Topic</div>
+        <div class=" -heading niceTextSm" style="background: #000000; color: #f74d28;">New Topic</div>
         <div class="panel-body"><button class="btn btn-default" style="float:left;"><%= link_to("New", {:action => 'new', :category_id => @category.id}, :class => 'action new') %></button></div>
       </div>
       <% end %>
@@ -21,7 +21,7 @@
       
       <div class="panel panel-default marginup15px">
       
-      	<div class="panel-heading niceTextSm" style="background: #333; color: #fff;">Current Topics</div>
+      	<div class="panel-heading niceTextSm" style="background: #000000; color: #f74d28;">Current Topics</div>
       
         <div class="panel-body">
 
