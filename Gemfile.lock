@@ -85,6 +85,9 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
+    minitest-rails (2.2.1)
+      minitest (~> 5.7)
+      railties (~> 4.1)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -189,6 +192,8 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  minitest (~> 5.7)
+  minitest-rails (~> 2.2)
   omniauth-microsoft_v2_auth!
   pg (= 0.17.1)
   rails (= 4.2.5)
