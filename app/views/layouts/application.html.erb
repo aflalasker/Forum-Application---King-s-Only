@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') %>
     <%= stylesheet_link_tag('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js') %>
     <%= stylesheet_link_tag('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') %>
+    <link rel="stylesheet" href="./stylesheets/style.css"> 
   </head>
   <body>
     <% if !flash[:notice].blank? %>
@@ -26,18 +27,52 @@
             <% if session[:id] %>
             <div id = "name" style="margin-top:5px;">
               <%= session[:name].split(", ")[1]%> <%= session[:name].split(", ")[0]%>
+              
             </div>
             <div>
-            <button class="btn btn-default" style='margin-top:5px; margin-bottom:5px; margin-left:100px;'> <%= link_to("Log out", {:controller => 'access', :action => 'disconnect'}, :class => "action disconnect") %></button>
+           
             </div>
+           
+             <button class="btn btn-default" style='margin-top:0px;  margin-bottom:8px; margin-left:100px;'> <%= link_to("Log out", {:controller => 'access', :action => 'disconnect'}, :class => "action disconnect") %></button>
             <% end %>
         </div>
     </header>
+    <div>
+      
+      <div id="myCarousel" class= "carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+
+
+        </ol>
+        <div class = "carousel-inner" role="listbox"> 
+          <div class= "item active">
+             <%= image_tag("kcl2.png") %>
+             <div class= "carousel-caption">
+               
+                 <h2> Welcome to the King's Connect Forum </h2>
+                 <h3> This is a forum for King's College London students and staff </h3>
+                 
+                 <br>
+            </div>
+           
+          </div>
+        
+        <div class ="item">
+          <%= image_tag("kcl2.png") %>
+        </div>
+        </div>
+        
+        
+      </div>
+      
+      
+      
+    </div> <!--- End of slider  -->
     <div class="wrapper" style="margin-top:10px;">
         <%= yield %>
     </div>
     <footer>
-      <p id="copyright">&copy; Pistachio Team</p>
+      <p id="copyright"> Team Pistachio Copyright &copy; 2017</p>
     </footer>
   </body>
 </html>

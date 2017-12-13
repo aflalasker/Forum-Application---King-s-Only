@@ -15,14 +15,6 @@
  */
  
 
-
-
-//  footer{
-	
-// 	background: #EDEFF0;
-	
-	
-// }
 .wrapper {
 	background: white;
 	width: 60%;
@@ -93,14 +85,14 @@
 	margin-bottom:1px;
 	margin-right:1px;
 	float:right;
-	color: #f74d28;
+	color: #000000;
     background-color: #fff;
-    border-color: #f74d28
+    border-color: #000000
 }
 
 .button {
-	color: #f74d28;
-	border: 1px solid #f74d28;
+	color: #EA1919;
+	border: 1px solid #EA1919;
 	padding: .5em 1em;
 	border-radius: 0.2em;
 	text-decoration: none !important;
@@ -160,7 +152,7 @@
 			}
 		}
 		input[type="submit"] {
-			background: #F74D28;
+			background: #000000;
 			border: none;
 			color: white;
 			font-weight: 100;
@@ -212,9 +204,9 @@
 			}
 		}
 		input[type="submit"] {
-			background: #f74d28;
+			background: #000000;
 			border: none;
-			color: white;
+			color: red;
 			font-weight: 100;
 			padding: .5em 1em;
 			border-radius: .2em;
@@ -241,17 +233,17 @@
 	margin-top:5px;
 	background: #000000;
 	h2 {											//categories
-		color:white;
+		color:red;
 		font-family: "Times New Roman", Times, serif;
 		font-size: 18px;
 		
 		.panel > .panel-heading {
-    background-image: none;
+
     background-color: red;
     color: red;
 
 }
-	
+		
 
 	}
 	#topic-header-badge{
