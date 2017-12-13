@@ -17,11 +17,12 @@ class AccessController < ApplicationController
   # For more information about auth libraries see: https://azure.microsoft.com/documentation/articles/active-directory-v2-libraries/
   # omniauth-oauth2 repo:  https://github.com/intridea/omniauth-oauth2
   def login
-    logger.info session[:access_token]
-    if !session[:id]
       reset_session
       redirect_to '/auth/microsoft_v2_auth'
-    else 
+  end
+  
+  def index
+    if session[:id]
       flash[:notice] = "Welcome back to the forum!"
       redirect_to '/categories#index'
     end
