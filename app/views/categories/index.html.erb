@@ -1,37 +1,25 @@
 <% @page_title = "Categories" %>
 
 <div>
-     <div class="panel panel-default">
-      <div id="topic-header" class="panel-heading">
-         <h2 style="margin-left: 5px; margin-top: 5px;">Categories</h2>
-      </div> 
-     <!--end topic-header-->
-     </div>
-     <!--end panel panel-default 0-->
-    
-      <div class="panel panel-default marginup15px">
-      
-      	<div class="panel-heading niceTextSm" style="background:#000000; color: #f74d28;">Current Categories:</div>
-      
-        <div class="panel-body">
 
-            <table class="table table-default">
- 
-               <% @categories.each do |category| %>
-                <tr>
-                     <td><%= link_to(category.name, {:controller => 'topics', :category_id => category.id}, :class => 'action index') %></td>
-                </tr>
-                <% end %>
-     
-            </table>    
+    
+    <div class="panel panel-default">
+        <div class="panel-heading" style="background-color:black; color:red;">
+            <h4 class="niceGoogleFont">Categories</h4>
         </div>
-        <!--end panel-body-->
-      </div>     
-      <!--end panel-heading-->
+        <div class="panel-body niceGoogleFont">
+           <ul class="niceGoogleFont" style="">
+            <% @categories.each do |category| %>
+            <li style="margin-top:15px; list-style:none;" >
+                
+                     <%= link_to(category.name, {:controller => 'topics', :category_id => category.id}, :class => ' label label-default niceGoogleFont', :style => ' font-size:20px;  ') %>
+
+                 
+            </li>
+            <% end %>
+        </ul>     
+        </div>
+        
+        
     </div>
-    
-    
-    
-    
-    
 </div>

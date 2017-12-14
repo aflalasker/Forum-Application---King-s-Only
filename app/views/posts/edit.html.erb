@@ -4,19 +4,19 @@
 <div>
  
     <div class="panel panel-default" style="margin-top:5px;">
-      <div class="panel-heading niceText" style="background: #333; color: #fff;">New Post</div>
-      <div class="panel-body">
-          <div style="margin-bottom:15px;">Please <strong>insert</strong> content for new post: </div>
+      <div class="panel-heading niceGoogleFont" style="background: black; color: red;">Update Post</div>
+      <div class="panel-body niceGoogleFont">
+          <div style="margin-bottom:15px;">Please <strong>insert</strong> content for updated post: </div>
           <%= form_for(:post, :url => {:action => 'update', :id => @post.id, :topic_id => @topic.id}) do |f| %>
           <%= render(:partial => "form", :locals => {:f => f}) %>      
       </div>
     </div>
 
       <div style="float:right;">
-          <%= submit_tag("Update Post") %>
+          <%= submit_tag("Update Post", {:class => 'backDeleteButton', :style => 'background-color:#d10006 color:white;'}) %>
       </div>
      
       <% end %>
-   <button class="btn btn-default"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'action index') %></button>
+   <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button>
 </div>
 <% end %>

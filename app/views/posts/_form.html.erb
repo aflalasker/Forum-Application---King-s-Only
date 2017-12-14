@@ -1,11 +1,15 @@
-<table>
-    <tr>
-        <th >
-            <%= f.label(:content, "Content") %>
-        </th>
-        <td>
-            <%= f.text_field(:content) %>
-        </td>
-        </div>
-    </tr>
-</table>
+<!--<table>-->
+<!--    <tr>-->
+<!--        <th >-->
+<!--            <%= f.label(:content, "Content") %>-->
+<!--        </th>-->
+<!--        <td>-->
+<!--            <%= f.text_field(:content) %>-->
+<!--        </td>-->
+<!--        </div>-->
+<!--    </tr>-->
+<!--</table>-->
+<div class="form-group">
+    <%= f.label(:content, "Topic Content:") %>
+    <%= f.text_area :content, class: "form-control" %>
+</div>

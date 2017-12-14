@@ -3,26 +3,27 @@
 
 
 <div>
-    <h2>Delete Post</h2>
     <div class="panel panel-default" style="margin-top:5px;">
-      <div class="panel-heading niceText" style="background: #333; color: #fff;">Remove Post</div>
+      <div class="panel-heading niceText" style="background: black; color: red;">Remove Post</div>
       <div class="panel-body">
         <%= form_for(:post, :url => {:action => 'destroy', :id => @post.id, :topic_id => @topic.id}) do |f| %>
         
-        <p>Are you sure you want to delete <span class="label label-default"><%= @post.content %></span> post?</p>
-    
+        <h4>Are you sure you want to delete?</h4>
+        <div class="wrapperComment" id="wrapperCommentId">
+          <p class="demo-1"><%= @post.content %></p>
+        </div>
+        
+        <p style="margin-top:5px;">Please note that this process is <strong>irreversible.</strong></p>
+        
       </div>
     </div>
-<% end %>
-    
-    
-    
     
 
-    
     <div style="float:right;">
-        <%= submit_tag("Delete Post") %>
+        <%= submit_tag("Delete Post", :style => '', :class => 'backDeleteButton') %>
     </div>
     <% end %>
-     <button class="btn btn-default"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'action index') %></button>
+     <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button>
 </div>
+<% end %>
+

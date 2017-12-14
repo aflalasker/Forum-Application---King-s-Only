@@ -4,19 +4,19 @@
 <div>
  
     <div class="panel panel-default" style="margin-top:5px;">
-      <div class="panel-heading niceText" style="background: #333; color: #fff;">New Post</div>
+      <div class="panel-heading niceGoogleFont" style="background-color:black; color:red;">New Post</div>
       <div class="panel-body">
-          <div style="margin-bottom:15px;">Please <strong>insert</strong> content for new post in topic: <span class="label label-primary"><%= @topic.name %></span></div>
-          <%= form_for(:post, :url => {:action => 'create', :topic_id => @topic.id}) do |f| %>
+          <div style="margin-bottom:15px;">Please <strong>insert</strong> content for new post in topic: <span class="label label-primary" style="background-color:red; font-size:14px; color:white; border-style:none;"><%= @topic.name %></span></div>
+          <%= form_for(:post, :url => {:action => 'create', :topic_id => @topic.id}, :style => '') do |f| %>
           <%= render(:partial => "form", :locals => {:f => f}) %>      
       </div>
     </div>
 
       <div style="float:right;">
-          <%= submit_tag("New Post") %>
+          <%= submit_tag("New Post", :class => 'backDeleteButton') %>
       </div>
      
       <% end %>
-   <button class="btn btn-default"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'action index') %></button>
+   <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button>
 </div>
 <% end %>

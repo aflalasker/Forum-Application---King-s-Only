@@ -3,64 +3,56 @@
 <!--Link-->
 
 <div>
-    
-     <div class="panel panel-default">
-      <div id="topic-header" class="panel-heading">
-         <h2>Posts <span id="topic-header-badge" class="badge badge-default">Topic name: <%=@topic.name %> </span> </h2> 
-      </div> 
-     <!--end topic-header-->
-     </div>
-     <!--end panel panel-default 0-->
-     <% if !@topic.category.name.include?('Staff') || session[:role] == 1 %>
-      <div class="panel panel-default marginup15px">
-        <div class="panel-heading niceTextSm" style="background: #333; color: #fff;">New Post</div>
-        <div class="panel-body"><button class="btn btn-default" style="float:left;"><%= link_to("New", {:action => 'new', :topic_id => @topic.id}, :class => 'action new') %></button></div>
-      </div>
+    <div style="margin-top:20px; ,margin-bottom:10px;">
+      <div style="margin-top:10px;">
+      <% if !@topic.category.name.include?('Staff') || session[:role] == 1 %>
+      <span class="btn btn-primary btn-uppercase" style="float:right; margin: 5px 5px 5px 5px; border-style:none; background-color:#930020; color:white;"><%= link_to("New post", {:action => 'new', :topic_id => @topic.id}, :class => ' redButtonsWhiteFont' ,:style => 'background-color:#930020; color:white') %></span>
       <% end %>
-      <!--end panel panel-default 1-->
-      
+      </div>
       <div class="panel panel-default marginup15px">
       
-      	<div class="panel-heading niceTextSm" style="background: #333; color: #fff;">Current Posts</div>
+      	<div class="panel-heading niceGoogleFont" style="background: black; color: red;"><%= @topic.name %></div>
       
         <div class="panel-body">
-            <table class="table table-bordered" summary="Post list">
-                <tr>
-                     <td><%= @topic.content %></td>
-                     <td><%= User.where(:id => @topic.user_id).pluck(:first_name)[0] %> <%= User.where(:id => @topic.user_id).pluck(:last_name)[0] %></td>
-                </tr>
-                <% @posts.each do |post| %>
-                <tr>
-                     <td><%= post.content %></td>
-                     <td><%= User.where(:id => post.user_id).pluck(:first_name)[0] %> <%= User.where(:id => post.user_id).pluck(:last_name)[0] %></td>
-                     <td>
-                         <%= post.respect %>
-                         <% if Vote.exists?(user_id: session[:id], post_id: post.id, score: 1) %>
-                         <button class="btn btn-default" style="background-color:blue;"><%= link_to("+", {:action => 'clearupvote', :id => post.id, :topic_id => @topic.id}, :class => "action clearupvote") %></button>
-                         <button class="btn btn-default" disabled>-</button>
-                         <% elsif Vote.exists?(user_id: session[:id], post_id: post.id, score: -1) %>
-                         <button class="btn btn-default" disabled>+</button>
-                         <button class="btn btn-default" style="background-color:blue;"> <%= link_to("-", {:action => 'cleardownvote', :id => post.id, :topic_id => @topic.id}, :class => "action cleardownvote") %></button>
-                         <% else %>
-                         <button class="btn btn-default"> <%= link_to("+", {:action => 'upvote', :id => post.id, :topic_id => @topic.id}, :class => "action upvote") %></button>
-                         <button class="btn btn-default"> <%= link_to("-", {:action => 'downvote', :id => post.id, :topic_id => @topic.id}, :class => "action downvote") %></button>
-                         <% end %>
-                     </td>
-                     <% if !@topic.category.name.include?('Staff') && User.where(:id => post.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
-                     <td>
-                         <button class="btn btn-default"> <%= link_to("Edit", {:action => 'edit', :id => post.id, :topic_id => @topic.id}, :class => "action edit") %></button>
-                         <button class="btn btn-default"> <%= link_to("Delete", {:action => 'delete', :id => post.id, :topic_id => @topic.id}, :class => "action delete") %></button>
-                     </td>
-                     <% end %>
-                </tr>
-                <% end %>
-     
-            </table>    
+        <ul>
+            <li style="list-style:none; ">
+                <span class="column-wrapper">
+                    <span class="col-xs-9 commentBoxes " style = "background: #a1baa0; border: 1px solid black; margin-top:4px;">Date Created: <%= distance_of_time_in_words(@topic.created_at, Time.now) %> ago<br></br><%= @topic.content %></br></br>Author: <strong style="font-style:italic;"><%= User.where(:id => @topic.user_id).pluck(:first_name)[0] %> <%= User.where(:id => @topic.user_id).pluck(:last_name)[0] %></strong></span>
+                    <span class="col-xs-3">
+                    </span>
+                </span>
+            </li>
+            <% @posts.each do |post| %>
+                <li style="list-style:none; margin-left:5px;">
+                    <span class="column-wrapper">
+                        <span class="col-xs-9 commentBoxes " id="" style = "border: 1px solid black; margin-top:4px;">Date Created: <%= distance_of_time_in_words(post.created_at, Time.now) %> ago<br></br><%= post.content %></br></br>Author: <strong style="font-style:italic;"><%= User.where(:id => post.user_id).pluck(:first_name)[0] %> <%= User.where(:id => post.user_id).pluck(:last_name)[0] %></strong></span>
+                        <% if !@topic.category.name.include?('Staff') && User.where(:id => post.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
+                        <span class="col-xs-3" style=" margin-top:5px;">
+                             <button class="btn btn-default" style="background-color:#d10006; color:white;"> <%= link_to("Edit", {:action => 'edit', :id => post.id, :topic_id => @topic.id}, :class => "redButtonsWhiteFont") %></button>
+                             <button class="btn btn-default" style="background-color:#d10006; color:white;"> <%= link_to("Delete", {:action => 'delete', :id => post.id, :topic_id => @topic.id}, :class => "redButtonsWhiteFont") %></button>
+                             <%= post.respect %>
+                             <% if Vote.exists?(user_id: session[:id], post_id: post.id, score: 1) %>
+                             <button class="btn btn-default" style="background-color:blue;"><%= link_to("+", {:action => 'clearupvote', :id => post.id, :topic_id => @topic.id}, :class => "action clearupvote") %></button>
+                             <button class="btn btn-default" disabled>-</button>
+                             <% elsif Vote.exists?(user_id: session[:id], post_id: post.id, score: -1) %>
+                             <button class="btn btn-default" disabled>+</button>
+                             <button class="btn btn-default" style="background-color:blue;"> <%= link_to("-", {:action => 'cleardownvote', :id => post.id, :topic_id => @topic.id}, :class => "action cleardownvote") %></button>
+                             <% else %>
+                             <button class="btn btn-default"> <%= link_to("+", {:action => 'upvote', :id => post.id, :topic_id => @topic.id}, :class => "action upvote") %></button>
+                             <button class="btn btn-default"> <%= link_to("-", {:action => 'downvote', :id => post.id, :topic_id => @topic.id}, :class => "action downvote") %></button>
+                             <% end %>
+                        </span>
+                        <% end %>
+                    </span>
+                </li>
+            <% end %>
+        </ul>
         </div>
-        <!--end panel-body-->
-      </div>     
-      <!--end panel-heading-->
+        
+      </div>    
+       <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:controller => 'topics', :category_id => @topic.category_id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button>
     </div>
-    <!--end panel-default-->
-    <button class="btn btn-default"><%= link_to("Back", {:controller => 'topics', :category_id => @topic.category_id, :action => 'index'}, :class => 'action index') %></button>
+    
+    
+   
 </div>

@@ -7,50 +7,51 @@
     <%= stylesheet_link_tag('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') %>
     <%= stylesheet_link_tag('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js') %>
     <%= stylesheet_link_tag('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') %>
+    <%= stylesheet_link_tag('https://fonts.googleapis.com/css?family=Asap') %>
+    
+
   </head>
   <body>
-    <% if !flash[:notice].blank? %>
-        <div class="notice">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-    <header class="main_header clearfix">
+    <header class="main_header clearfix niceGoogleFont">
         <div class="wrapper">
             <div id="logo">
+              <%= image_tag("kcl3.png", :style => "height:10%; width:10%; border-style:none;") %>
               <% unless session[:id] %>
-              <%= link_to("King's Connect", {:controller => 'access', :action => 'index'}, :class => 'action index')%>
+              <%= link_to("King's Connect", {:controller => 'access', :action => 'index'}, :class => 'niceGoogleFontBold')%>
               <% else %>
-              <%= link_to("King's Connect", {:controller => 'categories', :action => 'index'}, :class => 'action index')%>
+              <%= link_to("King's Connect", {:controller => 'categories', :action => 'index'}, :class => 'niceGoogleFontBold')%>
               <% end %>
             </div> 
-            <% if session[:id] %>
-            <div id = "name" style="margin-top:5px;">
-              <%= session[:name].split(", ")[1]%> <%= session[:name].split(", ")[0]%>
-              
-            </div>
+           
+            
             <div>
            
             </div>
-           
-             <button class="btn btn-default" style='margin-top:0px;  margin-bottom:8px; margin-left:100px;'> <%= link_to("Log out", {:controller => 'access', :action => 'disconnect'}, :class => "action disconnect") %></button>
+            <% if session[:id] %>
+             <button class="btn btn-default niceGoogleFont " id="logoutbtn" style="float:right;"> <%= link_to("Log out", {:controller => 'access', :action => 'disconnect'}, :class => "applicationLogoutBtn") %>
+            <% end %>
+           <span class="" style="visibility: hidden;"></span>
+             </button>
+             <% if session[:id] %>
+            <div class="niceGoogleFont" style="margin-top:5px; float:right;">
+             <%= session[:name].split(", ")[1]%> <%= session[:name].split(", ")[0]%> 
+            </div>
             <% end %>
         </div>
     </header>
     <div>
       
       <div id="myCarousel" class= "carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+        <ol class="carousel-indicators niceGoogleFont">
 
 
         </ol>
         <div class = "carousel-inner" role="listbox"> 
-          <div class= "item active">
+          <div class= "item active niceGoogleFont">
              <%= image_tag("kcl2.png") %>
              <div class= "carousel-caption">
-               
-                 <h2> Welcome to the King's Connect Forum </h2>
-                 <h3> This is a forum for King's College London students and staff </h3>
-                 
+                 <h2 class="niceGoogleFont" > Welcome to the King's Connect Forum </h2>
+                 <h3 class="niceGoogleFont" > This is a forum for King's College London students and staff </h3>
                  <br>
             </div>
            
@@ -67,11 +68,20 @@
       
       
     </div> <!--- End of slider  -->
-    <div class="wrapper" style="margin-top:10px;">
+    <div class="wrapper" style="margin-top:10px; margin-bottom:10px;">
+      <% if !flash[:notice].blank? %>
+        <div class="notice label label-primary niceGoogleFont" style="font-size: 16px;" >
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
         <%= yield %>
     </div>
-    <footer>
-      <p id="copyright"> Team Pistachio Copyright &copy; 2017</p>
-    </footer>
+    <div class="container-fluid niceGoogleFont" style="margin-top:10px; margin-bottom:10px;">
+      
+        <!--<footer>-->
+    <!--  <p id="copyright"> Team Pistachio Copyright &copy; 2017</p>-->
+    <!--</footer>-->
+    </div>
+  
   </body>
 </html>
