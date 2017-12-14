@@ -79,7 +79,7 @@ The Forum Application is linked to the **King's College London's Microsoft App**
 
 ##Gem dependencies used in our application
 
-OmniAuth- A generalized Rack framework for multiple-provider authentication (used for microsoft authentication through King's ID)
+OmniAuth- A generalized Rack framework for multiple-provider authentication (used for microsoft authentication through King's login)
 
 Rubocop- Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide. (ensures all the code is conventional)
 
