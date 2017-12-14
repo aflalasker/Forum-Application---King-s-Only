@@ -41,6 +41,14 @@ class TopicTest < ActiveSupport::TestCase
     assert_not_nil topic.valid?
   end
   
+  test 'topic has posts if they are assigned to it' do
+        topic = Topic.new(name: 'New Topic', content: 'content', category_id: '1')
+        topic.save
+        post = Post.new(content: "Content", topic_id: topic.id)
+        post.save
+        assert topic.posts.include?(post)
+   end
+  
 
     
 end
