@@ -4,7 +4,8 @@
 <div>
  
     <div class="panel panel-default" style="margin-top:5px;">
-      <div class="panel-heading niceText" style="background: #000000; color: #f74d28;">New Topic</div>
+      <div class="panel-heading niceGoogleFont" style="background: black; color: red;">New Topic
+      </div>
       <div class="panel-body">
           <div style="margin-bottom:15px;">Please <strong>insert</strong> name for new topic in category: <span class="label label-primary"><%= @category.name %></span></div>
           <%= form_for(:topic, :url => {:action => 'create', :category_id => @category.id}) do |f| %>
@@ -13,10 +14,11 @@
     </div>
 
       <div style="float:right;">
-          <%= submit_tag("New Topic") %>
+          <%= submit_tag("New Topic", :class => 'backDeleteButton') %>
       </div>
-     
+    
       <% end %>
-   <button class="btn btn-default"><%= link_to("Back", {:category_id => @category.id, :action => 'index'}, :class => 'action index') %></button>
+  
+  <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:category_id => @category.id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button>
 </div>
 <% end %>
