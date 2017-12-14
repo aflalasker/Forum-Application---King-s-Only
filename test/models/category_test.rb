@@ -1,7 +1,6 @@
 require 'test_helper'
 
-class CategoryTest < ActiveSupport::TestCase
-   
+class CategoryTest < ActiveSupport::TestCase   
    test 'valid category' do
      category = Category.new(name: 'Category name')
      category.save

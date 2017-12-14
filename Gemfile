@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use SCSS for stylesheets
@@ -23,7 +22,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
+
+gem 'rubocop', '~> 0.52.0', require: false
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -36,8 +37,6 @@ gem 'omniauth-microsoft_v2_auth', git: omniauth_src
 # On Windows systems we need tzinfo-data
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -46,6 +45,10 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  
+  gem 'factory_girl', '~> 4.9'
+  
+  gem 'capybara', '~> 2.16', '>= 2.16.1'
 end
 
 group :development do
@@ -60,4 +63,3 @@ group :production do
   gem 'pg', '0.17.1'
   gem 'rails_12factor', '0.0.2'
 end
-

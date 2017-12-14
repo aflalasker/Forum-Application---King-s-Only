@@ -4,10 +4,10 @@ require File.expand_path('../application', __FILE__)
 # The following values must match the client ID, secret, and reply URL
 # in your Microsoft App Registration Portal entry for your app.
 
-#dee data
+# dee data
 
-#ENV['CLIENT_ID'] = '85f1ef61-f210-4c18-afbf-9fcfb8093a73'
-#ENV['CLIENT_SECRET'] = 'kfnlwCUORLO21)-^-czG040'
+# ENV['CLIENT_ID'] = '85f1ef61-f210-4c18-afbf-9fcfb8093a73'
+# ENV['CLIENT_SECRET'] = 'kfnlwCUORLO21)-^-czG040'
 
 ENV['CLIENT_ID'] = '3978b7b5-5f45-4b68-a466-639d49b6e002'
 ENV['CLIENT_SECRET'] = 'znePVVDGD286@rhbaW97*:('
