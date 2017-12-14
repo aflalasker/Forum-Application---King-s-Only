@@ -73,3 +73,22 @@ The Application has **Two Categories,** a space for the Staff to add posts and s
 The Forum Application is linked to the **King's College London's Microsoft App**, this means the Students and Staff who use this service should be **registered** KCL users. Students and Staffs should use their KCL email address to sign-up to use the service, and then they can sign-in to the Forum application using the KCL email. Then the Students and Staff who sign-in to the forum can View, Add Posts, and add Comments to Posts. However, in-order to Edit a Post, you should be the owner of the Post.
 
 </section>
+
+
+<section>
+
+##Gem dependencies used in our application
+
+OmniAuth- A generalized Rack framework for multiple-provider authentication (used for microsoft authentication through King's ID)
+
+Rubocop- Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide. (ensures all the code is conventional)
+
+Tzinfo-data- TZInfo::Data contains data from the IANA Time Zone database packaged as Ruby modules for use with TZInfo.(used for microsoft authentication)
+
+Factory Girl - factory_girl provides a framework and DSL for defining and using factories - less error-prone, more explicit, and all-around easier to work with than fixtures. (used for testing)
+
+Capybara- Capybara is an integration testing tool for rack based web applications. It simulates how a user would interact with a website. (used for integration testing)
+
+Minitest- minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking. (for unit testing)
+
+</section>
