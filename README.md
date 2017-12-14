@@ -1,11 +1,4 @@
 
-<head>
-	<title>Team Pistacho</title>
-</head>
-
-
-<body>
-
 	<h1>Team Pistachio</h1>
 	<hr>
 	<h3>Team Members</h3>
@@ -82,6 +75,4 @@
 
 	</p>
 </section>
-
-</body>
 
