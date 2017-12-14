@@ -4,41 +4,43 @@ class TopicTest < ActiveSupport::TestCase
   
   test 'valid test' do
    topic = Topic.new(name: 'name2017', content: 'content', category_id: '1')
-   topic.save
-   assert topic.valid?
+   assert topic.save
   end
   
   
   test 'cannot create topic without name' do
    topic = Topic.new(content: 'content', category_id: '1')
-   topic.save
-   assert_not_nil topic.valid?
+   assert_not topic.save
   end
   
   test 'cannot create topic without content' do
    topic = Topic.new(name: 'topicname2017', category_id: '1')
-   topic.save
-   assert_not_nil topic.valid?
+   assert_not topic.save
   end
   
   test 'cannot create topic without category_id' do
    topic = Topic.new(name: 'topicname2017', content: 'Here is some content')
-   topic.save
-   assert_not_nil topic.valid?
+   assert_not topic.save
   end
   
   
   
-  test 'topic name cannot exceed 255 characters' do
-    topic = Topic.new(name: 'This name exceeds 255 characters by the way!!! Lorem ipsum dolor sit amet, nonummy ligula volutpat hac integer nonummy. Suspendisse ultricies, congue etiam tellus, erat libero, nulla eleifend, mauris pellentesque. Suspendisse integer praesent vel, integer gravida mauris, fringilla vehicula lacinia non lacinia', content: 'content', category_id: '1')
-    topic.save
-    assert_not_nil topic.valid?
+  test 'topic name cannot exceed 128 characters' do
+    @str = ""
+    for i in 0...129
+        @str << 's'
+    end
+    topic = Topic.new(name: @str)
+    assert_not topic.save
   end
   
-  test 'topic content cannot exceed 255 characters' do
-    topic = Topic.new(content: 'This content exceeds 255 characters by the way!!! Lorem ipsum dolor sit amet, nonummy ligula volutpat hac integer nonummy. Suspendisse ultricies, congue etiam tellus, erat libero, nulla eleifend, mauris pellentesque. Suspendisse integer praesent vel, integer gravida mauris, fringilla vehicula lacinia non lacinia')
-    topic.save
-    assert_not_nil topic.valid?
+  test 'topic content cannot exceed 10000 characters' do
+    @str = ""
+    for i in 0...10001
+        @str << 's'
+    end
+    topic = Topic.new(content: @str)
+    assert_not topic.save
   end
   
   test 'topic has posts if they are assigned to it' do

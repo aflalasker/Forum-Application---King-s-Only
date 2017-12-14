@@ -1,7 +1,7 @@
 class CreateCategories < ActiveRecord::Migration
   def up
     create_table :categories do |t|
-      t.string 'name'
+      t.string 'name', limit: 128
       t.timestamps
     end
   end
