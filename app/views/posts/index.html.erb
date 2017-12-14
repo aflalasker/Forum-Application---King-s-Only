@@ -33,6 +33,19 @@
                 <tr>
                      <td><%= post.content %></td>
                      <td><%= User.where(:id => post.user_id).pluck(:first_name)[0] %> <%= User.where(:id => post.user_id).pluck(:last_name)[0] %></td>
+                     <td>
+                         <%= post.respect %>
+                         <% if Vote.exists?(user_id: session[:id], post_id: post.id, score: 1) %>
+                         <button class="btn btn-default" style="background-color:blue;"><%= link_to("+", {:action => 'clearupvote', :id => post.id, :topic_id => @topic.id}, :class => "action clearupvote") %></button>
+                         <button class="btn btn-default" disabled>-</button>
+                         <% elsif Vote.exists?(user_id: session[:id], post_id: post.id, score: -1) %>
+                         <button class="btn btn-default" disabled>+</button>
+                         <button class="btn btn-default" style="background-color:blue;"> <%= link_to("-", {:action => 'cleardownvote', :id => post.id, :topic_id => @topic.id}, :class => "action cleardownvote") %></button>
+                         <% else %>
+                         <button class="btn btn-default"> <%= link_to("+", {:action => 'upvote', :id => post.id, :topic_id => @topic.id}, :class => "action upvote") %></button>
+                         <button class="btn btn-default"> <%= link_to("-", {:action => 'downvote', :id => post.id, :topic_id => @topic.id}, :class => "action downvote") %></button>
+                         <% end %>
+                     </td>
                      <% if !@topic.category.name.include?('Staff') && User.where(:id => post.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
                      <td>
                          <button class="btn btn-default"> <%= link_to("Edit", {:action => 'edit', :id => post.id, :topic_id => @topic.id}, :class => "action edit") %></button>
