@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :topic
+  has_many :votes
 
   before_validation :add_default_respect
   validates_presence_of :topic_id
