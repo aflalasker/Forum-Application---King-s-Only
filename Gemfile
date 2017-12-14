@@ -45,6 +45,10 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  
+  gem 'factory_girl', '~> 4.9'
+  
+  gem 'capybara', '~> 2.16', '>= 2.16.1'
 end
 
 group :development do

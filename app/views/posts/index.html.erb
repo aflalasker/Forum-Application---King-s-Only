@@ -30,6 +30,17 @@
                         <span class="col-xs-3" style=" margin-top:5px;">
                              <button class="btn btn-default" style="background-color:#d10006; color:white;"> <%= link_to("Edit", {:action => 'edit', :id => post.id, :topic_id => @topic.id}, :class => "redButtonsWhiteFont") %></button>
                              <button class="btn btn-default" style="background-color:#d10006; color:white;"> <%= link_to("Delete", {:action => 'delete', :id => post.id, :topic_id => @topic.id}, :class => "redButtonsWhiteFont") %></button>
+                             <%= post.respect %>
+                             <% if Vote.exists?(user_id: session[:id], post_id: post.id, score: 1) %>
+                             <button class="btn btn-default" style="background-color:blue;"><%= link_to("+", {:action => 'clearupvote', :id => post.id, :topic_id => @topic.id}, :class => "action clearupvote") %></button>
+                             <button class="btn btn-default" disabled>-</button>
+                             <% elsif Vote.exists?(user_id: session[:id], post_id: post.id, score: -1) %>
+                             <button class="btn btn-default" disabled>+</button>
+                             <button class="btn btn-default" style="background-color:blue;"> <%= link_to("-", {:action => 'cleardownvote', :id => post.id, :topic_id => @topic.id}, :class => "action cleardownvote") %></button>
+                             <% else %>
+                             <button class="btn btn-default"> <%= link_to("+", {:action => 'upvote', :id => post.id, :topic_id => @topic.id}, :class => "action upvote") %></button>
+                             <button class="btn btn-default"> <%= link_to("-", {:action => 'downvote', :id => post.id, :topic_id => @topic.id}, :class => "action downvote") %></button>
+                             <% end %>
                         </span>
                         <% end %>
                     </span>

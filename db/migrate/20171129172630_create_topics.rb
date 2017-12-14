@@ -5,7 +5,6 @@ class CreateTopics < ActiveRecord::Migration
       t.integer 'user_id'
       t.string 'name'
       t.string 'content'
-      t.integer 'respect'
       t.timestamps
     end
     add_index('topics', 'category_id')
