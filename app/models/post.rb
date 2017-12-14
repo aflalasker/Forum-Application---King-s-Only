@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   before_validation :add_default_respect
   validates_presence_of :topic_id
   validates_presence_of :content
-
+  validates_presence_of :content, maximum: 10000
   scope :sorted, -> { order('posts.created_at DESC') }
 
   private

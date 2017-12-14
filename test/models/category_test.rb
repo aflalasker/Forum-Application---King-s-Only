@@ -3,18 +3,22 @@ require 'test_helper'
 class CategoryTest < ActiveSupport::TestCase   
    test 'valid category' do
      category = Category.new(name: 'Category name')
-     assert category.valid? 
+     assert category.save 
    end
    
    test 'category must have a name' do
      category = Category.new()
-     assert_not_nil category.valid? 
+     assert_not category.save
    end
    
-   test 'category name must not exceed 255 characters' do
-     category = Category.new(name: 'This exceeds 255 characters!!! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. ')
-     assert_not_nil category.valid? 
-   end
+   test 'category name cannot exceed 128 characters' do
+    @str = ""
+    for i in 0...129
+        @str << 's'
+    end
+    category = Category.new(name: @str)
+    assert_not category.save
+  end
    
    test 'category has topics if they are assigned to it' do
         category = Category.new(name: 'New Category')

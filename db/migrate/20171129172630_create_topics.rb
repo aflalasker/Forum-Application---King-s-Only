@@ -3,8 +3,8 @@ class CreateTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.integer 'category_id'
       t.integer 'user_id'
-      t.string 'name'
-      t.string 'content'
+      t.string 'name', limit: 128
+      t.string 'content', limit: 10000
       t.timestamps
     end
     add_index('topics', 'category_id')

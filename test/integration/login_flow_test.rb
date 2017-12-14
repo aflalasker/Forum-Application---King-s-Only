@@ -5,7 +5,8 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
     get '/'
     assert_response :success
     
-    #session[:id] = 1
+    session[:id] = 1
+    get '/'
     assert_not page.has_button?("Logout")
   end
 end
