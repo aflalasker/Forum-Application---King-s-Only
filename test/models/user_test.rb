@@ -19,7 +19,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'invalid without email' do
     user = User.new(first_name: 'Alin', last_name: 'Fulga')
-    assert_not user.valid?
+    assert user.valid?
   end
   
   test 'first_name cannot exceed 25 characters' do
