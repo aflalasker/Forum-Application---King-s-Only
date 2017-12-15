@@ -1,7 +1,11 @@
+<%# Simple labels displaying the topic name and also the text field for that topic %>
+
 <div class="form-group">
     <%= f.label(:name, "Topic Name:") %>
     <%= f.text_field :name, class:"form-control" %>
 </div>
+
+<%# This is another label which shows the topic content and also the text area! %>
 <div class="form-group">
     <%= f.label(:content, "Topic Content:") %>
     <%= f.text_area :content, class: "form-control" %>

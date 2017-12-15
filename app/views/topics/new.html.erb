@@ -1,7 +1,11 @@
 <% if !@category.name.include?('Staff') || session[:role] == 1 %>
 <% @page_title = "New Topic" %>
 
+<%# This is to create a new topic which a user should be able to do %>
+
 <div>
+ 
+ <%# This is the styling used in posts and topics  %>
  
     <div class="panel panel-default" style="margin-top:5px;">
       <div class="panel-heading niceGoogleFont" style="background: black; color: red;">New Topic
@@ -13,6 +17,8 @@
       </div>
     </div>
 
+
+<%# Submit tag to allow the user to add a new topic  %>
       <div style="float:right;">
           <%= submit_tag("New Topic", :class => 'backDeleteButton', id: 'send') %>
       </div>
