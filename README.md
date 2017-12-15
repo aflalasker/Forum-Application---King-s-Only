@@ -72,6 +72,8 @@ The Application has **Two Categories,** a space for the Staff to add posts and s
 
 The Forum Application is linked to the **King's College London's Microsoft App**, this means the Students and Staff who use this service should be **registered** KCL users. Students and Staffs should use their KCL email address to sign-up to use the service, and then they can sign-in to the Forum application using the KCL email. Then the Students and Staff who sign-in to the forum can View, Add Posts, and add Comments to Posts. However, in-order to Edit a Post, you should be the owner of the Post.
 
+We also added further functionality where a user can see the time a post has been submitted and also a voting system where a user can up-vote or down-vote on a post. 
+
 </section>
 
 
@@ -90,5 +92,10 @@ Factory Girl - factory_girl provides a framework and DSL for defining and using 
 Capybara- Capybara is an integration testing tool for rack based web applications. It simulates how a user would interact with a website. (used for integration testing)
 
 Minitest- minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking. (for unit testing)
+
+rack_session_access-  Rack middleware that provides access to rack.session environment. (mock for integration testing)
+
+rspec-rails- rspec-rails is a testing framework for Rails 3+. (needed to run rack_session_access)
+
 
 </section>
