@@ -6,6 +6,6 @@ class CreateVotes < ActiveRecord::Migration
       t.integer 'score'
       t.timestamps null: false
     end
-    add_index 'votes', ['post_id', 'user_id'], :unique => true
+    add_index 'votes', %w[post_id user_id], unique: true
   end
 end

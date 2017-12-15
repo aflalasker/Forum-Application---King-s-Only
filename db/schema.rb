@@ -1,4 +1,4 @@
-# encoding: UTF-8
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,63 +11,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214000836) do
-
-  create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+ActiveRecord::Schema.define(version: 20_171_214_000_836) do
+  create_table 'categories', force: :cascade do |t|
+    t.string   'name'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.integer  "topic_id"
-    t.integer  "user_id"
-    t.text     "content"
-    t.integer  "respect"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'posts', force: :cascade do |t|
+    t.integer  'topic_id'
+    t.integer  'user_id'
+    t.text     'content'
+    t.integer  'respect'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  add_index 'posts', ['topic_id'], name: 'index_posts_on_topic_id'
+  add_index 'posts', ['user_id'], name: 'index_posts_on_user_id'
 
-  create_table "staff_lists", force: :cascade do |t|
-    t.string "email", limit: 100, default: "", null: false
+  create_table 'staff_lists', force: :cascade do |t|
+    t.string 'email', limit: 100, default: '', null: false
   end
 
-  add_index "staff_lists", ["email"], name: "index_staff_lists_on_email", unique: true
+  add_index 'staff_lists', ['email'], name: 'index_staff_lists_on_email', unique: true
 
-  create_table "topics", force: :cascade do |t|
-    t.integer  "category_id"
-    t.integer  "user_id"
-    t.string   "name"
-    t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'topics', force: :cascade do |t|
+    t.integer  'category_id'
+    t.integer  'user_id'
+    t.string   'name'
+    t.string   'content'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  add_index "topics", ["category_id"], name: "index_topics_on_category_id"
-  add_index "topics", ["user_id"], name: "index_topics_on_user_id"
+  add_index 'topics', ['category_id'], name: 'index_topics_on_category_id'
+  add_index 'topics', ['user_id'], name: 'index_topics_on_user_id'
 
-  create_table "users", force: :cascade do |t|
-    t.string   "first_name", limit: 25
-    t.string   "last_name",  limit: 50
-    t.string   "email",      limit: 100, default: "", null: false
-    t.integer  "role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'users', force: :cascade do |t|
+    t.string   'first_name', limit: 25
+    t.string   'last_name',  limit: 50
+    t.string   'email',      limit: 100, default: '', null: false
+    t.integer  'role'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index 'users', ['email'], name: 'index_users_on_email', unique: true
 
-  create_table "votes", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'votes', force: :cascade do |t|
+    t.integer  'post_id'
+    t.integer  'user_id'
+    t.integer  'score'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_index "votes", ["post_id", "user_id"], name: "index_votes_on_post_id_and_user_id", unique: true
-
+  add_index 'votes', %w[post_id user_id], name: 'index_votes_on_post_id_and_user_id', unique: true
 end

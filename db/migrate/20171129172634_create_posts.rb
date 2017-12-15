@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.integer 'topic_id'
       t.integer 'user_id'
-      t.text 'content', limit: 10000
+      t.text 'content', limit: 10_000
       t.integer 'respect'
       t.timestamps
     end

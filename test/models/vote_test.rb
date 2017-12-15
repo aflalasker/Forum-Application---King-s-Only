@@ -1,15 +1,6 @@
-require "test_helper"
+require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
-  #def vote
-  #  @vote ||= Vote.new
-  #end
-
-  #def test_valid
-   # assert vote.valid?
-  #end
-  
-  
    test 'valid vote' do
     vote = Vote.new(post_id: '1', user_id: '1', score: '-1')
      assert vote.valid?
@@ -38,5 +29,4 @@ class VoteTest < ActiveSupport::TestCase
     vote = Vote.new(user_id: user.id, post_id: '1', score: '-1')
     assert vote.valid?
     end
-
 end

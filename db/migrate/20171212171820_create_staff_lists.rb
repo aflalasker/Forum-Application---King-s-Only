@@ -4,6 +4,6 @@ class CreateStaffLists < ActiveRecord::Migration
       t.string 'email', default: '', null: false, limit: 100
       t.timestamp
     end
-    add_index 'staff_lists', 'email', :unique => true
+    add_index 'staff_lists', 'email', unique: true
   end
 end
