@@ -83,7 +83,7 @@ We also added further functionality where a user can see the time a post has bee
 An error occurred in the application and your page could not be served. Please try again in a few moments.
 If you are the application owner, check your logs for details.
 
-If this error occurs please refresh the page!
+If this error occurs please refresh the page as the initial callback may not be automatically recognised.
 
 </section>
 
