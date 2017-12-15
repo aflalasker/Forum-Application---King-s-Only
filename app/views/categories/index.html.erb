@@ -4,15 +4,16 @@
 
     
     <div class="panel panel-default">
-        <div class="panel-heading" style="background-color:black; color:red;">
-            <h4 class="niceGoogleFont">Categories</h4>
+        <div class="panel-heading" style="background-color:black; color:red;"> <%# This class is the main panel heading and we used a simple black background with color red for the actual border %>
+            <h4 class="niceGoogleFont">Categories</h4>  <%# This is the type of the font that we used for the text used in the forum%>
         </div>
-        <div class="panel-body niceGoogleFont">
+        <div class="panel-body niceGoogleFont">             <%# This is more styling towards the font of the panel body in the index page. %>
            <ul class="niceGoogleFont" style="">
             <% @categories.each do |category| %>
             <li style="margin-top:15px; list-style:none;" >
                 
                      <%= link_to(category.name, {:controller => 'topics', :category_id => category.id}, :class => ' label label-default niceGoogleFont', :style => ' font-size:20px;  ') %>
+                     <%# The comment above links the controller to a topic and a category id to a category id, allows the class to use a google font and style of the selected font size %>
 
                  
             </li>
