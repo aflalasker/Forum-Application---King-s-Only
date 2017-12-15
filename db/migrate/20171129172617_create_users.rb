@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer 'role'
       t.timestamps
     end
-    add_index 'users', ['email'], :unique => true
+    add_index 'users', ['email'], unique: true
   end
 
   def down

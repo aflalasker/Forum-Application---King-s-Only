@@ -1,16 +1,14 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'capybara/rails'
+# module ActiveSupport
+#   class TestCase
+#     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+#     fixtures :all
 
-module ActiveSupport
-  class TestCase
-    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-    fixtures :all
-    
-    include FactoryGirl::Syntax::Methods
-  end
-end
+#     include FactoryGirl::Syntax::Methods
+#   end
+# end
 
 require 'capybara/rails'
 require 'capybara/minitest'
@@ -28,4 +26,3 @@ class ActionDispatch::IntegrationTest
     Capybara.use_default_driver
   end
 end
-

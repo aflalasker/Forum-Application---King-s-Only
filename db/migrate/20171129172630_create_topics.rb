@@ -4,7 +4,7 @@ class CreateTopics < ActiveRecord::Migration
       t.integer 'category_id'
       t.integer 'user_id'
       t.string 'name', limit: 128
-      t.string 'content', limit: 10000
+      t.string 'content', limit: 10_000
       t.timestamps
     end
     add_index('topics', 'category_id')
