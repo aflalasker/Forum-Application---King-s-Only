@@ -1,7 +1,10 @@
-<% @page_title = "Posts" %>
+<% @page_title = "Posts" %> 
 
-<!--Link-->
+<%# This allows the user to do many different functionlaties which is to create a post, delete a post, view a post and also edit a post. %>
+
+<%# the following adds styling to the page that has been consitently used throughout the process of the application %>
 <div>
+
     <div style="margin-top:20px; ,margin-bottom:10px;">
       <div style="margin-top:10px;">
       <% if !@topic.category.name.include?('Staff') || session[:role] == 1 %>
@@ -10,42 +13,50 @@
       </div>
       <div class="panel panel-default marginup15px">
       
-        <div class="panel-heading niceGoogleFont" style="background: black; color: red;"><%= @topic.name %></div>
+        <div class="panel-heading niceGoogleFont" style="background: black; color: red;"><%= @topic.name %></div> <%# this uses the font we have decided to use in the forum along with the background of black and also the colour red %>
       
         <div class="panel-body">
         <ul>
             <li style="list-style:none; ">
-                <span class="column-wrapper">
+                <span class="column-wrapper">   <%# we have decided to use a coloured background to allow the user to see the time at which the post was created and also allow other users to view this feature  %>
                     <span class="col-xs-12 commentBoxes " style = "background: #a1baa0; border: 1px solid black; margin-top:4px;">Date Created: <%= distance_of_time_in_words(@topic.created_at, Time.now) %> ago<br></br><%= @topic.content %></br></br>Author: <strong style="font-style:italic;"><%= User.where(:id => @topic.user_id).pluck(:first_name)[0] %> <%= User.where(:id => @topic.user_id).pluck(:last_name)[0] %></strong></span>
                    
                     </span>
                 </span>
             </li>
+            
+            <%# This allows the creation of the time again for the date created  and also showing the authors name which is extracted when they are logged in %>
             <% @posts.each do |post| %>
                 <li style="list-style:none; margin-left:5px;">
                     <span class="column-wrapper">
                         <span class="col-xs-12 commentBoxes " id="" style = "border: 1px solid black; margin-top:4px;">Date Created: <%= distance_of_time_in_words(post.created_at, Time.now) %> ago<br></br><%= post.content %></br></br><span     >Author: <strong style="font-style:italic;"><%= User.where(:id => post.user_id).pluck(:first_name)[0] %> <%= User.where(:id => post.user_id).pluck(:last_name)[0]%></strong></span>
-                        <% #if !@topic.category.name.include?('Staff') && User.where(:id => post.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
+                        <% if !@topic.category.name.include?('Staff') && User.where(:id => post.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
                              <button class="btn btn-default" style="margin-top:10px; background-color:#d10006; color:white;"> <%= link_to("Edit", {:action => 'edit', :id => post.id, :topic_id => @topic.id}, :class => "redButtonsWhiteFont") %></button>
                              <button class="btn btn-default" style="margin-top:10px; background-color:#d10006; color:white;"> <%= link_to("Delete", {:action => 'delete', :id => post.id, :topic_id => @topic.id}, :class => "redButtonsWhiteFont") %></button>
                              
-                             
-                        <% #end %>
-                        
-                        
-                          
-                            <button class="btn btn-default notClickable" style="background-color:green; color:white; margin-right:4px;">+</button>
-                            <button class="btn btn-default notClickable" style="background-color:#d10006; color:white;">-</button> 
-                            <span class="" style="float:right; margin-top:18px; margin-right:5px;">Total votes:<strong> <%= post.respect %></strong></span>
-                          
-                                        
-                            
+                             <%# this is how we implemented the entire voting system which allows the user to upvote or down vote a comment depending on popularity, the vote can be reset by doing to opposite of what was done and then voting again %>
+                        <% end %>
+                        <% unless User.where(:id => post.user_id).pluck(:id)[0] == session[:id] %>
+                             <% if Vote.exists?(user_id: session[:id], post_id: post.id, score: 1) %>
+                             <button class="btn btn-default notClickable" style="background-color:green; color:white; margin-right:4px;" disabled>+</button>
+                             <button class="btn btn-default notClickable" style="background-color:#d10006; color:white;"><%= link_to("-", {:action => 'clearupvote', :id => post.id, :topic_id => @topic.id},:class => "redButtonsWhiteFont") %></button>
+                             <% elsif Vote.exists?(user_id: session[:id], post_id: post.id, score: -1) %>
+                             <button class="btn btn-default notClickable" style="background-color:green; color:white; margin-right:4px;"><%= link_to("+", {:action => 'cleardownvote', :id => post.id, :topic_id => @topic.id}, :class => "greenButtonsWhiteFont") %></button>
+                             <button class="btn btn-default notClickable" style="background-color:#d10006; color:white;" disabled>-</button>
+                             <% else %>
+                             <button class="btn btn-default notClickable" style="background-color:green; color:white; margin-right:4px;" > <%= link_to("+", {:action => 'upvote', :id => post.id, :topic_id => @topic.id}, :class => "greenButtonsWhiteFont") %></button>
+                             <button class="btn btn-default notClickable" style="background-color:#d10006; color:white;"> <%= link_to("-", {:action => 'downvote', :id => post.id, :topic_id => @topic.id}, :class => "redButtonsWhiteFont") %></button>
+                             <% end %>
+                        <% end %>
+                        <span class="" style="float:right; margin-top:18px; margin-right:5px;">Total votes:<strong> <%= post.respect %></strong></span>
                         </span>
                     </span>                                                                                                                                                                                                                                                                                                                             
                 </li>
             <% end %>
         </ul>
         </div>
+        
+        <%#This is the default button implemented on all our pages with the back button  %>
         
       </div>    
        <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:controller => 'topics', :category_id => @topic.category_id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button>

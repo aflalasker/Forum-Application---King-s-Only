@@ -6,7 +6,9 @@
     
 
     <div class="container-fluid" style="margin-bottom:5px; margin-left:10px;">
-        <span class="btn btn-default btn-uppercase" style="background-color:#d10006; color:white;"><%= link_to("Start New Topic", {:action => 'new', :category_id => @category.id},:class =>  "redButtonsWhiteFont",:style => '') %></span>    
+        <% if !@category.name.include?('Staff') || session[:role] == 1 %>
+        <span class="btn btn-default btn-uppercase" style="background-color:#d10006; color:white;"><%= link_to("Start New Topic", {:action => 'new', :category_id => @category.id},:class =>  "redButtonsWhiteFont",:style => '') %></span> 
+        <% end %>
     </div>
     
     
