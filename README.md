@@ -66,7 +66,7 @@
 
 ### Brief Overview of the Application
 
-This a web based **Forum** Application developed using the **Rails** framework. The Application is deployed in the **Heroku server**, and can be found using this **link: wwwwwwwwww**
+This a web based **Forum** Application developed using the **Rails** framework. The Application is deployed in the **Heroku server**, and can be found using this **link: https://floating-meadow-68988.herokuapp.com**
 
 The Application has **Two Categories,** a space for the Staff to add posts and space for the Students to add Posts. The Staffs have the rights to **Create, Edit, and Delete** Posts throughout the Forum, including the Students Space. On the other hand, the students can only add Posts in the Students space, and **cannot** manipulate any Posts made by the Staff.
 
