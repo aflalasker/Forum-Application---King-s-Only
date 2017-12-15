@@ -3,7 +3,7 @@
   <head>
     <title>King's Connect | <%= @page_title || "Admin" %></title>
     <%= stylesheet_link_tag('application', :media => 'all') %>
-    <%= stylesheet_link_tag('https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css') %>
+    <%= stylesheet_link_tag('https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css') %>      <%# We have used different stylesheets which we use and we used bootstrap for the main styling of our forum %>
     <%= stylesheet_link_tag('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') %>
     <%= stylesheet_link_tag('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js') %>
     <%= stylesheet_link_tag('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') %>
@@ -15,9 +15,9 @@
     <header class="main_header clearfix niceGoogleFont">
         <div class="wrapper">
             <div id="logo">
-              <%= image_tag("kcl3.png", :style => "height:10%; width:10%; border-style:none;") %>
+              <%= image_tag("kcl3.png", :style => "height:10%; width:10%; border-style:none;") %>    <%# This is the main logo on the forum page which will be displayed on all pages. %>
               <% unless session[:id] %>
-              <%= link_to("King's Connect", {:controller => 'access', :action => 'index'}, :class => 'niceGoogleFontBold')%>
+              <%= link_to("King's Connect", {:controller => 'access', :action => 'index'}, :class => 'niceGoogleFontBold')%>  <%# clicking on the king's connect logo should allow the user to be redirected to the home page %>
               <% else %>
               <%= link_to("King's Connect", {:controller => 'categories', :action => 'index'}, :class => 'niceGoogleFontBold')%>
               <% end %>
@@ -26,39 +26,40 @@
             
             <div>
            
+           <%# This is for the logout button %>
             </div>
             <% if session[:id] %>
-             <button class="btn btn-default niceGoogleFont " id="logoutbtn" style="float:right;"> <%= link_to("Log out", {:controller => 'access', :action => 'disconnect'}, :class => "applicationLogoutBtn") %>
+             <button class="btn btn-default niceGoogleFont " id="logoutbtn" style="float:right;"> <%= link_to("Log out", {:controller => 'access', :action => 'disconnect'}, :class => "applicationLogoutBtn") %> 
             <% end %>
            <span class="" style="visibility: hidden;"></span>
              </button>
              <% if session[:id] %>
             <div class="niceGoogleFont" style="margin-top:5px; float:right;">
-             <%= session[:name].split(", ")[1]%> <%= session[:name].split(", ")[0]%> 
+             <%= session[:name].split(", ")[1]%> <%= session[:name].split(", ")[0]%> <%# We are using the simple form for the font. %>
             </div>
             <% end %>
         </div>
     </header>
     <div>
       
-      <div id="myCarousel" class= "carousel slide" data-ride="carousel">
+      <div id="myCarousel" class= "carousel slide" data-ride="carousel"> <%# use this to fade the image a little so the text is easier to see %>
         <ol class="carousel-indicators niceGoogleFont">
 
 
         </ol>
         <div class = "carousel-inner" role="listbox"> 
           <div class= "item active niceGoogleFont">
-             <%= image_tag("kcl2.png") %>
+             <%= image_tag("kcl2.png") %>  <%# This displays the image using carousel inner utility %>
              <div class= "carousel-caption">
-                 <h2 class="niceGoogleFont" > Welcome to the King's Connect Forum </h2>
-                 <h3 class="niceGoogleFont" > This is a forum for King's College London students and staff </h3>
+                 <h2 class="niceGoogleFont" > Welcome to the King's Connect Forum </h2>  <%# This is the heading on the picture %>
+                 <h3 class="niceGoogleFont" > This is a forum for King's College London students and staff </h3> <%# This just described what our forum is about %>
                  <br>
             </div>
            
           </div>
         
         <div class ="item">
-          <%= image_tag("kcl2.png") %>
+          <%= image_tag("kcl2.png") %> <%# This for the second image in the forum %>
         </div>
         </div>
         
@@ -67,7 +68,7 @@
       
       
       
-    </div> <!--- End of slider  -->
+    </div> <%# The image ends here..  %>
     <div class="wrapper" style="margin-top:10px; margin-bottom:10px;">
       <% if !flash[:notice].blank? %>
         <div class="notice label label-primary niceGoogleFont" style="font-size: 16px;" >

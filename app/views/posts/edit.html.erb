@@ -1,10 +1,11 @@
 <% if !@topic.category.name.include?('Staff') && User.where(:id => @post.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
 <% @page_title = "Update Post" %>
 
+<%# This class is purely for editing a task as a task should be able to edit their comment or post itself in the forum %>
 <div>
  
     <div class="panel panel-default" style="margin-top:5px;">
-      <div class="panel-heading niceGoogleFont" style="background: black; color: red;">Update Post</div>
+      <div class="panel-heading niceGoogleFont" style="background: black; color: red;">Update Post</div>    <%# This allws them to update a post %>
       <div class="panel-body niceGoogleFont">
           <div style="margin-bottom:15px;">Please <strong>insert</strong> content for updated post: </div>
           <%= form_for(:post, :url => {:action => 'update', :id => @post.id, :topic_id => @topic.id}) do |f| %>
@@ -13,8 +14,10 @@
     </div>
 
       <div style="float:right;">
-          <%= submit_tag("Update Post", {:class => 'backDeleteButton', :style => 'background-color:#d10006 color:white;'}) %>
+          <%= submit_tag("Update Post", {:class => 'backDeleteButton', :style => 'background-color:#d10006 color:white;'}) %> <%# This is another update post submit tag %>
       </div>
+      
+      <%# Same button styling is used throughout the project to keep it as consistent as possible ! %>
      
       <% end %>
    <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button>

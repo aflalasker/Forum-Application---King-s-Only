@@ -1,15 +1,15 @@
 <!--<table>-->
 <!--    <tr>-->
 <!--        <th >-->
-<!--            <%= f.label(:content, "Content") %>-->
+<!--            <%= f.label(:content, "Content") %>-->    <%# This is for the content in the forum and we have a simple label for that %>
 <!--        </th>-->
 <!--        <td>-->
-<!--            <%= f.text_field(:content) %>-->
+<!--            <%= f.text_field(:content) %>-->  <%# We also have a simple text field for the content %>
 <!--        </td>-->
 <!--        </div>-->
 <!--    </tr>-->
 <!--</table>-->
 <div class="form-group">
-    <%= f.label(:content, "Topic Content:") %>
-    <%= f.text_area :content, class: "form-control" %>
+    <%= f.label(:content, "Topic Content:") %> <%# This is another label for the topic content %>
+    <%= f.text_area :content, class: "form-control" %>  <%# This is a text area where the user can enter text %>
 </div>

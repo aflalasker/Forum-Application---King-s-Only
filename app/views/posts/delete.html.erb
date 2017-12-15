@@ -1,29 +1,29 @@
-<% if !@topic.category.name.include?('Staff') && User.where(:id => @post.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
-<% @topic_title = "Delete post" %>
+<% if !@topic.category.name.include?('Staff') && User.where(:id => @post.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>  <%# This checks if the category name includes a staff and check for the user  %>
+<% @topic_title = "Delete post" %>  <%# This also has a functionality to delete a post %>
 
-
+<%# This is the main panel where we have the panel body and the panel heading to remove a post, this string or symbol representing the object we are concerned with using form_for %>
 <div>
     <div class="panel panel-default" style="margin-top:5px;">
       <div class="panel-heading niceText" style="background: black; color: red;">Remove Post</div>
       <div class="panel-body">
         <%= form_for(:post, :url => {:action => 'destroy', :id => @post.id, :topic_id => @topic.id}) do |f| %>
         
-        <h4>Are you sure you want to delete?</h4>
-        <div class="wrapperComment" id="wrapperCommentId">
+        <h4>Are you sure you want to delete?</h4>                 <%# This is a simple message asking the user if they would like to destroy a message %>
+        <div class="wrapperComment" id="wrapperCommentId">          
           <p class="demo-1"><%= @post.content %></p>
         </div>
         
-        <p style="margin-top:5px;">Please note that this process is <strong>irreversible.</strong></p>
+        <p style="margin-top:5px;">Please note that this process is <strong>irreversible.</strong></p>      <%# This is giving them a final warning if they would really like to delete their post or topic %>
         
       </div>
     </div>
     
 
     <div style="float:right;">
-        <%= submit_tag("Delete Post", :style => '', :class => 'backDeleteButton') %>
+        <%= submit_tag("Delete Post", :style => '', :class => 'backDeleteButton') %>   <%# This is a submit tag which has inner functionality to allow the user to delete the post or not  %>
     </div>
     <% end %>
-     <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button>
+     <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:topic_id => @topic.id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button> <%# The buttons are styled for colours with red and text white  %>
 </div>
 <% end %>
 

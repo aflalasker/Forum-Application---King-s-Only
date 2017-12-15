@@ -3,21 +3,22 @@
 <div>
      <div class="panel panel-default">
       <div id="topic-header" class="panel-heading">
-         <h2;<h1 style="color:#f74d28;">Login</h1>
+         <h2;<h1 style="color:#f74d28;">Login</h1>  <!-- this is to create the login button on the main page using the red colour as per our design requirements-->
       
       </div> 
      <!--end topic-header-->
      </div>
      <!--end panel panel-default 0-->
     
-      <div class="panel panel-default marginup15px">
+      <div class="panel panel-default marginup15px">    <!-- this is main body of the panel, the class panel was marginally not in place so to balance it we did this-->
         <div class="panel-body">
             <table class="table table-default">
 
                         <i>Please login with an email with the format </i>'<b>firstname.lastname@kcl.ac.uk</b>'.
                          <button class="btn btn-default" style="color:#f74d28; background:#000000; padding: 10px 50px 10px 50px;" onclick="window.location.href = '/login'">Login</button>
                      
-              
+                      <%# The above is the styling we added when the user has to login to the forum we have a simple message with instructions %>
+                      <%# follwed by a button which would redirect the user to the microsoft login page, we have just customized the colors and added styling to this.%>
      
             </table>    
         </div>
