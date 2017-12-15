@@ -1,6 +1,8 @@
 <% if !@category.name.include?('Staff') && User.where(:id => @topic.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
 <% @topic_title = "Delete topic" %>
 
+<%# This will allow the user to delete a topic itself %>
+
 
 <div>
     <div class="panel panel-default" style="margin-top:5px;">
@@ -9,12 +11,12 @@
         <%= form_for(:topic, :url => {:action => 'destroy', :id => @topic.id, :category_id => @category.id}) do |f| %>
         
         <h4>Are you sure you want to delete <span class="label label-default" style="background-color:red;"><%= @topic.name %></span></h4>
-        <p>Please note that this process is <strong>irreversible.</strong></p>
+        <p>Please note that this process is <strong>irreversible.</strong></p>      <%# same message to warn the user that this is the final stage if they do not want to commit %>
         
       </div>
     </div>
 
-
+<%# this is the submit tag which allows the user to go back to the last page that they were or delete the page and return to the page before. %>
 
     
     <div style="float:right;">

@@ -1,22 +1,26 @@
 <% if !@category.name.include?('Staff') && User.where(:id => @topic.user_id).pluck(:id)[0] == session[:id] || session[:role] == 1 %>
 <% @page_title = "Edit Topic" %>
 
+<%# This is the same process as editing a post as editing a topic  %>
+
 <div>
  
     <div class="panel panel-default" style="margin-top:5px;">
-      <div class="panel-heading niceGoogleFont" style="background: black; color: red;">Update Topic</div>
+      <div class="panel-heading niceGoogleFont" style="background: black; color: red;">Update Topic</div> <%# We have used consistent styling using the same font as well the as the same colors%>
       <div class="panel-body">
-           <div style="margin-bottom:15px;">Please <strong>insert</strong> content for updated topic: </div>
-          <%= form_for(:topic, :url => {:action => 'update', :id => @topic.id, :category_id => @category.id}) do |f| %>
+           <div style="margin-bottom:15px;">Please <strong>insert</strong> content for updated topic: </div> <%# This is for the content for updated topic  %>
+          <%= form_for(:topic, :url => {:action => 'update', :id => @topic.id, :category_id => @category.id}) do |f| %> <%# This updates the topic ! %>
           <%= render(:partial => "form", :locals => {:f => f}) %>      
 
       </div>
     </div>
 
+<%# The back delete button was structured wrong so we had to use float right to set it exactly right %>
       <div style="float:right;">
           <%= submit_tag("Update Topic", {:class => 'backDeleteButton', :style => 'background-color:#d10006 color:white;'}) %>
       </div>
      
+     <%# This is the default back button used %>
       <% end %>
    <button class="btn btn-default" style="background-color:#d10006; color:white;"><%= link_to("Back", {:category_id => @category.id, :action => 'index'}, :class => 'redButtonsWhiteFont') %></button>
 </div>
