@@ -50,7 +50,12 @@ class TopicTest < ActiveSupport::TestCase
         post.save
         assert topic.posts.include?(post)
    end
-  
+   
+   test 'topic belongs to a category' do
+       category = Category.new(name: 'Category')
+       category.save
+       topic = Topic.new(name: 'New Topic', content: 'content', category_id: category.id)
+       assert topic.save
+   end
 
-    
 end
