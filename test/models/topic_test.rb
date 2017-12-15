@@ -38,12 +38,19 @@ class TopicTest < ActiveSupport::TestCase
     topic = Topic.new(content: @str)
     assert_not topic.save
   end
-
+  
   test 'topic has posts if they are assigned to it' do
-    topic = Topic.new(name: 'New Topic', content: 'content', category_id: '1')
-    topic.save
-    post = Post.new(content: 'Content', topic_id: topic.id)
-    post.save
-    assert topic.posts.include?(post)
-  end
+        topic = Topic.new(name: 'New Topic', content: 'content', category_id: '1')
+        topic.save
+        post = Post.new(content: "Content", topic_id: topic.id)
+        post.save
+        assert topic.posts.include?(post)
+   end
+   
+   test 'topic belongs to a category' do
+       category = Category.new(name: 'Category')
+       category.save
+       topic = Topic.new(name: 'New Topic', content: 'content', category_id: category.id)
+       assert topic.save
+   end
 end

@@ -9,4 +9,12 @@ class StaffListTest < ActiveSupport::TestCase
     user = User.new(email: @str)
     assert_not user.save
   end
+  
+  test 'each staff member email must be unique' do
+    user1 = User.new(first_name: 'Alin', last_name: 'Fulga', email: 'alin.fulga@kcl.ac.uk', role: 1)
+    user1.save
+    user2 = User.new(first_name: 'Alin', last_name: 'F', email: 'alin.fulga@kcl.ac.uk', role: 1)
+    assert_not user2.save
+  end
+  
 end

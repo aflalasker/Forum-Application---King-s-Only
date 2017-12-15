@@ -24,7 +24,12 @@ class PostTest < ActiveSupport::TestCase
     post = Post.new(content: @str)
     assert_not post.save
   end
-
+  test 'post belongs to a topic' do
+    topic = Topic.new(name: 'New Topic', content: 'content', category_id: '1')
+    topic.save
+    post = Post.new(content: 'content', topic_id: topic.id)
+    assert post.save
+  end
   test 'post has votes if they are assigned to it' do
     post = Post.new(content: 'content', topic_id: '1')
     post.save
