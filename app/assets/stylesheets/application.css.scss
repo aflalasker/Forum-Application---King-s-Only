@@ -395,3 +395,13 @@
 	font-family: 'Asap', sans-serif;
 	font-weight:bold;
 }
+
+
+.notClickable {
+	margin-top:10px;  background-color:green; color:white;
+}
+
+
+.notClickable:hover {
+	margin-top:10px;  background-color:#333; color:white;
+}
